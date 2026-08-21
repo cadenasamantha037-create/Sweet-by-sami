@@ -1,0 +1,160 @@
+/* =========================================================
+   V10 · HOME SCOOP
+   Portada tipo V5 + catálogo como subpágina independiente.
+   ========================================================= */
+
+.home-v10{
+  background:
+    radial-gradient(circle at 8% 16%,rgba(255,205,221,.32),transparent 24%),
+    radial-gradient(circle at 92% 22%,rgba(255,226,235,.72),transparent 26%),
+    linear-gradient(180deg,#fff9fb 0%,#fffdfd 53%,#fff7fa 100%);
+}
+
+.home-v10 .v10-header .active-link{
+  color:#d65382;
+  font-weight:800;
+}
+
+/* Botones principales: rosa fuerte limpio, SIN efecto de reflejo/chrome. */
+.home-v10 .v10-solid-primary,
+.home-v10 .v10-cart-link{
+  background:#e85f8d !important;
+  color:#fff !important;
+  border:1px solid #e85f8d !important;
+  box-shadow:0 12px 28px rgba(202,69,117,.22) !important;
+  text-shadow:none !important;
+  background-image:none !important;
+}
+.home-v10 .v10-solid-primary::before,
+.home-v10 .v10-solid-primary::after,
+.home-v10 .v10-cart-link::before,
+.home-v10 .v10-cart-link::after{
+  display:none !important;
+  content:none !important;
+}
+.home-v10 .v10-solid-primary:hover,
+.home-v10 .v10-cart-link:hover{
+  background:#dc4e7f !important;
+  border-color:#dc4e7f !important;
+  transform:translateY(-2px);
+}
+.home-v10 .v10-cart-link{
+  text-decoration:none;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px 12px 10px 18px;
+  border-radius:999px;
+  font-weight:800;
+}
+.home-v10 .v10-cart-link .cart-count{
+  background:#fff;
+  color:#d65080;
+  border:0;
+  box-shadow:none;
+}
+
+/* La portada vuelve a la composición aprobada: logo grande a la izquierda,
+   mensaje y opciones a la derecha. */
+.home-v10 .hero-v10{
+  padding-top:52px;
+  padding-bottom:92px;
+}
+.home-v10 .hero-showcase{
+  min-height:610px;
+  padding-bottom:48px;
+}
+.home-v10 .hero-logo-main{
+  transform:scale(.96);
+}
+.home-v10 .hero-recognition-line{
+  margin-top:-14px;
+}
+.home-v10 .hero-recognition-line strong{
+  color:#7f4739;
+  font-size:18px;
+  letter-spacing:.01em;
+}
+.home-v10 .hero-order-side h1{
+  max-width:680px;
+}
+.home-v10 .hero-order-side h1 span{
+  white-space:nowrap;
+}
+.home-v10 .hero-order-side h1 em{
+  /* Rosa pastel sólido para que no se pierda sobre el fondo rosado */
+  opacity:1;
+  background:none;
+  -webkit-background-clip:border-box;
+  background-clip:border-box;
+  -webkit-text-fill-color:#d86f95;
+  color:#d86f95;
+  filter:none;
+  text-shadow:0 1px 0 rgba(255,255,255,.94), 0 4px 14px rgba(170,77,109,.12);
+}
+.home-v10 .hero-spoon-choice{
+  text-decoration:none;
+  color:inherit;
+}
+.home-v10 .hero-spoon-choice:focus-visible{
+  outline:3px solid rgba(229,83,132,.35);
+  outline-offset:3px;
+}
+.home-v10 .hero-actions-v5 .button{
+  min-width:180px;
+}
+.home-v10 .button-ghost{
+  background:#fff !important;
+  border:1px solid rgba(215,92,136,.16) !important;
+  box-shadow:0 10px 25px rgba(136,61,83,.07) !important;
+}
+
+.home-v10 .how-section-v10{
+  padding-top:74px;
+  padding-bottom:92px;
+}
+
+@media (max-width:980px){
+  .home-v10 .hero-order-side h1 span{white-space:normal}
+}
+
+@media (max-width:640px){
+  .home-v10 .v10-cart-link{padding:9px}
+  .home-v10 .v10-cart-link span:first-child{display:none}
+  .home-v10 .hero-v10{padding-top:30px;padding-bottom:64px}
+  .home-v10 .hero-showcase{padding-bottom:36px}
+  .home-v10 .hero-recognition-line strong{font-size:16px}
+}
+
+/* =========================================================
+   V11 · SCOOP BUTTONS FLAT
+   P y M mantienen su paleta; G pasa a celeste pastel.
+   Sin chrome, reflejos ni degradados metálicos.
+   ========================================================= */
+.home-v10 .hero-spoon-choice{
+  background:#fffafb !important;
+  background-image:none !important;
+  border:1px solid #f1d9e1 !important;
+  box-shadow:0 10px 22px rgba(132,77,94,.08) !important;
+}
+.home-v10 .hero-spoon-choice:hover{
+  transform:translateY(-3px);
+  box-shadow:0 14px 28px rgba(132,77,94,.12) !important;
+}
+.home-v10 .hero-spoon-letter{
+  background:#e96b96 !important;
+  background-image:none !important;
+  border:0 !important;
+  text-shadow:none !important;
+  box-shadow:none !important;
+}
+.home-v10 .hero-spoon-choice:nth-child(2) .hero-spoon-letter{
+  background:#f5c85b !important;
+  background-image:none !important;
+  color:#fff !important;
+}
+.home-v10 .hero-spoon-choice:nth-child(3) .hero-spoon-letter{
+  background:#a9d9ee !important;
+  background-image:none !important;
+  color:#fff !important;
+}
