@@ -1,0 +1,18 @@
+SWEET BY SAMI · V34 · DEPLOY ROOT
+
+IMPORTANTE:
+En GitHub / Netlify deben quedar en la RAÍZ, al mismo nivel que index.html:
+
+index.html
+catalogo.html
+admin-sami.html
+assets/
+css/
+js/
+supabase/
+_redirects
+netlify.toml
+
+No subas solamente los HTML y no dejes assets/css/js dentro de otra carpeta contenedora.
+
+Esta V34 no requiere SQL nuevo respecto a V33.
