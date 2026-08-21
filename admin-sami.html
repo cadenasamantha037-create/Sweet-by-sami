@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,nofollow" />
+  <title>Sweet by Sami · Administración</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/admin.css" />
+  <link rel="stylesheet" href="css/admin-metallic.css" />
+  <link rel="stylesheet" href="css/v26-final.css" />
+
+  <style id="sweet-v30-responsive-inline">
+  /* Sweet by Sami V30 · responsive embebido para Netlify */
+/* =========================================================
+   SWEET BY SAMI · V29 RESPONSIVE FINAL
+   Override final cargado después de los estilos anteriores.
+   Objetivo: cero desbordamiento horizontal en móvil/tablet,
+   manteniendo la composición de escritorio.
+   ========================================================= */
+
+html,
+body{
+  width:100%;
+  max-width:100%;
+  overflow-x:clip;
+}
+
+img,
+svg,
+video,
+canvas,
+iframe{
+  max-width:100%;
+}
+
+main,
+section,
+article,
+header,
+footer,
+nav,
+form,
+fieldset,
+div{
+  min-width:0;
+}
+
+button,
+input,
+textarea,
+select,
+a{
+  min-width:0;
+}
+
+/* Mega Caja: dos acciones en paralelo en escritorio. */
+.home-mega-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.home-mega-actions .button{
+  margin:0;
+}
+.home-mega-video-btn{
+  color:#c84a78!important;
+  border-color:rgba(213,79,127,.22)!important;
+  background:#fff!important;
+  box-shadow:0 9px 22px rgba(128,54,78,.07)!important;
+  white-space:nowrap;
+}
+.home-mega-video-btn:hover{
+  border-color:rgba(213,79,127,.42)!important;
+  background:#fff7fa!important;
+}
+
+/* Evita que textos largos rompan grids/flex. */
+.category-public-head p,
+.product-card p,
+.hero-lead,
+.hero-brand-note,
+.checkout-card,
+.order-card,
+.panel-card,
+.delivery-address-box,
+.map-place-card,
+.national-recipient-admin{
+  overflow-wrap:anywhere;
+  word-break:normal;
+}
+
+/* Tablet general */
+@media (max-width: 1024px){
+  .section-shell{
+    width:min(100% - 32px,1160px)!important;
+  }
+
+  .site-header{
+    width:calc(100% - 24px)!important;
+    grid-template-columns:minmax(0,1fr) auto!important;
+  }
+
+  .desktop-nav{display:none!important}
+
+  .home-mega-card{
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  .home-mega-copy{
+    text-align:center;
+  }
+  .home-mega-actions{
+    justify-content:center;
+  }
+
+  .catalog-page-hero-inner-v9{
+    width:100%!important;
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+
+  .category-public-head{
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  .category-public-head p{
+    max-width:760px;
+  }
+
+  .product-grid{
+    grid-template-columns:minmax(0,1fr)!important;
+    width:100%;
+    max-width:720px!important;
+    margin-inline:auto;
+  }
+
+  .product-card,
+  .mega-card{
+    width:100%;
+    max-width:100%;
+  }
+
+  .admin-main{
+    width:100%;
+    max-width:none;
+  }
+}
+
+/* Celular / tablet vertical */
+@media (max-width: 760px){
+  body{
+    overflow-x:hidden;
+  }
+
+  .section-shell{
+    width:calc(100% - 24px)!important;
+    max-width:none!important;
+  }
+
+  .candy-rail{
+    width:24px!important;
+    opacity:.2!important;
+  }
+
+  /* Header público */
+  .site-header{
+    width:calc(100% - 16px)!important;
+    height:auto!important;
+    min-height:64px;
+    top:8px!important;
+    margin-top:8px!important;
+    padding:7px 8px 7px 10px!important;
+    border-radius:19px!important;
+    grid-template-columns:minmax(0,1fr) auto!important;
+    gap:8px;
+  }
+  .site-header .brand{
+    width:68px!important;
+    height:48px!important;
+  }
+  .site-header .brand img{
+    width:100%!important;
+    height:100%!important;
+    object-fit:contain!important;
+  }
+  .site-header .header-actions{
+    gap:6px!important;
+    max-width:100%;
+  }
+  .site-header .cart-button{
+    padding:7px!important;
+    gap:0!important;
+  }
+  .site-header .cart-button>span:first-child{
+    display:none!important;
+  }
+  .site-header .cart-count{
+    width:32px!important;
+    height:32px!important;
+    flex:0 0 32px;
+  }
+  .site-header .status-button{
+    min-height:40px;
+    max-width:105px;
+    padding:8px 10px!important;
+    font-size:9px!important;
+    line-height:1.15;
+    white-space:normal;
+  }
+
+  /* HOME */
+  .home-v10 .hero-v10{
+    width:calc(100% - 20px)!important;
+    padding-top:22px!important;
+    padding-bottom:52px!important;
+  }
+  .home-v10 .hero-showcase{
+    width:100%!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    padding:20px 14px 68px!important;
+    border-radius:28px!important;
+    overflow:hidden;
+  }
+  .home-v10 .hero-logo-stage{
+    width:min(100%,320px)!important;
+  }
+  .home-v10 .hero-order-side{
+    width:100%;
+    padding:10px 0!important;
+  }
+  .home-v10 .hero-order-side h1{
+    width:100%;
+    max-width:none!important;
+    font-size:clamp(38px,12vw,54px)!important;
+  }
+  .home-v10 .hero-order-side h1 span{
+    white-space:normal!important;
+  }
+  .home-v10 .hero-lead,
+  .home-v10 .hero-brand-note{
+    width:100%;
+    max-width:none;
+  }
+  .home-v10 .hero-spoon-options{
+    width:100%;
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  .home-v10 .hero-spoon-choice{
+    width:100%;
+    max-width:100%;
+  }
+  .home-v10 .hero-actions-v5{
+    width:100%;
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+
+  .home-mega-section{
+    width:calc(100% - 24px)!important;
+  }
+  .home-mega-card{
+    width:100%;
+    grid-template-columns:minmax(0,1fr)!important;
+    padding:11px!important;
+    border-radius:25px!important;
+    gap:10px!important;
+  }
+  .home-mega-media{
+    width:100%;
+    min-height:0!important;
+    aspect-ratio:1.25;
+    border-radius:19px!important;
+  }
+  .home-mega-media img{
+    width:100%!important;
+    height:100%!important;
+    object-fit:contain!important;
+  }
+  .home-mega-copy{
+    width:100%;
+    padding:14px 10px 20px!important;
+  }
+  .home-mega-copy h2{
+    font-size:40px!important;
+  }
+  .home-mega-actions{
+    display:grid;
+    grid-template-columns:minmax(0,1fr);
+    width:100%;
+    gap:8px;
+  }
+  .home-mega-actions .button{
+    width:100%!important;
+    white-space:normal;
+    text-align:center;
+  }
+
+  .steps-grid{
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  .step-card{
+    width:100%;
+  }
+
+  /* CATÁLOGO: fix principal del desbordamiento mostrado en móvil */
+  .catalog-page-hero-v9{
+    width:100%;
+    padding:20px 10px 14px!important;
+  }
+  .catalog-page-hero-inner-v9{
+    width:100%!important;
+    max-width:100%!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    padding:24px 16px!important;
+    border-radius:24px!important;
+    overflow:hidden;
+  }
+  .catalog-page-hero-inner-v9>div{
+    width:100%;
+  }
+  .catalog-page-hero-inner-v9 h1{
+    font-size:clamp(38px,12vw,50px)!important;
+    overflow-wrap:anywhere;
+  }
+  .catalog-page-hero-inner-v9 p{
+    width:100%;
+    max-width:none!important;
+    font-size:13px;
+  }
+  .catalog-page-hero-inner-v9 img{
+    width:min(190px,64%)!important;
+  }
+
+  .catalog-page-section-v9{
+    width:100%;
+    padding:54px 0 70px!important;
+    overflow:hidden;
+  }
+  .catalog-page-section-v9>.section-shell{
+    width:calc(100% - 20px)!important;
+    max-width:none!important;
+  }
+  .catalog-page-tools-v9{
+    width:100%;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:flex-start!important;
+    gap:14px!important;
+    padding-bottom:24px!important;
+  }
+  .catalog-page-tools-v9>span{
+    width:100%;
+    font-size:11px;
+    line-height:1.45;
+    white-space:normal;
+  }
+  .catalog-back-link-v9{
+    max-width:100%;
+    white-space:normal;
+  }
+  .catalog-sections,
+  .catalog-category{
+    width:100%;
+    max-width:100%;
+    min-width:0!important;
+  }
+  .catalog-sections{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:48px!important;
+  }
+  .category-public-head{
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+    grid-template-columns:none!important;
+    gap:0!important;
+    margin-bottom:18px!important;
+    padding-bottom:16px!important;
+  }
+  .category-public-head>div,
+  .category-public-head>p{
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+  }
+  .category-public-head h3{
+    font-size:clamp(34px,11vw,46px)!important;
+    line-height:1.05;
+  }
+  .category-public-head p{
+    margin-top:9px!important;
+    font-size:12px!important;
+    line-height:1.6!important;
+  }
+
+  .product-grid{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    width:100%!important;
+    max-width:none!important;
+    margin:0!important;
+    gap:16px!important;
+  }
+  .product-card,
+  .spoon-card-v8,
+  .mega-card{
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    grid-column:auto!important;
+    border-radius:24px!important;
+    overflow:hidden!important;
+  }
+  .product-image,
+  .spoon-card-v8 .product-image,
+  .mega-card .product-image{
+    width:100%!important;
+    min-width:0!important;
+    min-height:0!important;
+    aspect-ratio:1.18!important;
+    padding:8px!important;
+    border-right:0!important;
+    border-bottom:1px solid rgba(218,88,137,.1)!important;
+  }
+  .product-image img,
+  .spoon-card-v8 .product-image img,
+  .mega-card .product-image img{
+    width:100%!important;
+    height:100%!important;
+    object-fit:cover!important;
+  }
+  .mega-card .product-image img{
+    object-fit:contain!important;
+  }
+  .product-card-body,
+  .spoon-card-v8 .product-card-body,
+  .mega-card .product-card-body{
+    width:100%!important;
+    padding:18px 16px 19px!important;
+  }
+  .product-topline,
+  .mega-card .product-topline{
+    width:100%;
+    min-width:0;
+    flex-wrap:wrap;
+    gap:8px!important;
+  }
+  .product-topline h3,
+  .mega-card .product-topline h3{
+    max-width:100%;
+    font-size:26px!important;
+  }
+  .product-price{
+    max-width:100%;
+  }
+
+  /* Producto, carrito y estado */
+  .modal-backdrop,
+  .checkout-backdrop,
+  .status-backdrop{
+    padding:0!important;
+    align-items:flex-end!important;
+  }
+  .product-modal,
+  .status-modal,
+  .checkout-modal{
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+  }
+  .product-modal{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    border-radius:24px 24px 0 0!important;
+    max-height:96dvh!important;
+    overflow:auto!important;
+  }
+  .modal-media{
+    width:100%;
+    min-height:0!important;
+    padding:12px!important;
+  }
+  .product-photo-shell{
+    width:100%;
+    min-height:245px!important;
+  }
+  .modal-content{
+    width:100%;
+    padding:24px 16px 22px!important;
+  }
+  .modal-content h2{
+    font-size:38px!important;
+  }
+  .variant-heading{
+    flex-direction:column!important;
+    align-items:flex-start!important;
+    gap:4px;
+  }
+  .variant-pills{
+    width:100%;
+  }
+  .variant-pill{
+    max-width:100%;
+    white-space:normal;
+  }
+
+  .cart-drawer{
+    width:100%!important;
+    max-width:100%!important;
+    padding:18px 14px!important;
+  }
+  .cart-item{
+    grid-template-columns:48px minmax(0,1fr) auto!important;
+  }
+  .cart-info{
+    min-width:0;
+  }
+  .cart-info strong,
+  .cart-info span{
+    overflow-wrap:anywhere;
+  }
+
+  .checkout-modal{
+    border-radius:24px 24px 0 0!important;
+    padding:16px 10px!important;
+    max-height:97dvh!important;
+    overflow:auto!important;
+  }
+  .checkout-head{
+    padding:14px 42px 16px 4px!important;
+  }
+  .checkout-head h2{
+    font-size:34px!important;
+  }
+  .checkout-card{
+    width:100%;
+    min-width:0!important;
+    padding:14px!important;
+    border-radius:18px!important;
+  }
+  .form-grid,
+  .form-grid.two,
+  .fulfillment-options,
+  .fulfillment-options-four,
+  .preparation-options,
+  .payment-method-options,
+  .payment-layout{
+    grid-template-columns:minmax(0,1fr)!important;
+    width:100%;
+  }
+  .checkout-card input,
+  .checkout-card textarea,
+  .checkout-card select,
+  .phone-prefix-field{
+    max-width:100%;
+  }
+  .phone-prefix-field{
+    grid-template-columns:auto minmax(0,1fr)!important;
+  }
+  .map-place-card{
+    align-items:flex-start!important;
+    width:100%;
+  }
+  .map-place-card>div{
+    min-width:0!important;
+  }
+  .pickup-whatsapp-actions{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  .pickup-whatsapp-actions a,
+  .cash-whatsapp-action{
+    width:100%;
+    max-width:100%;
+    text-align:center;
+    white-space:normal;
+  }
+  .payment-layout{
+    gap:14px!important;
+  }
+  .qr-shell-wrap,
+  .payment-info{
+    width:100%;
+  }
+  .qr-shell{
+    width:min(100%,280px)!important;
+    margin-inline:auto;
+  }
+  .receipt-preview{
+    grid-template-columns:64px minmax(0,1fr)!important;
+  }
+  .receipt-preview img{
+    width:64px!important;
+    height:64px!important;
+  }
+  .checkout-item,
+  .checkout-total-row,
+  .pay-total{
+    min-width:0;
+  }
+
+  .status-modal{
+    border-radius:24px 24px 0 0!important;
+    padding:26px 16px!important;
+  }
+
+  /* Footer */
+  .site-footer{
+    width:calc(100% - 24px)!important;
+    max-width:none!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    text-align:center!important;
+    gap:18px!important;
+  }
+  .footer-brand-block{
+    width:100%;
+    min-width:0!important;
+    justify-content:center!important;
+    flex-direction:column!important;
+  }
+  .footer-socials{
+    width:100%;
+    margin-left:0!important;
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+  }
+  .footer-socials a{
+    width:100%;
+    min-width:0;
+    padding-inline:10px!important;
+  }
+  .footer-note{
+    width:100%;
+    text-align:center!important;
+  }
+
+  /* ADMIN */
+  .admin-sidebar{
+    position:static!important;
+    width:100%!important;
+    height:auto!important;
+    padding:12px!important;
+    overflow:hidden;
+  }
+  .admin-brand{
+    padding-bottom:12px!important;
+  }
+  .admin-brand img{
+    width:66px!important;
+    height:54px!important;
+  }
+  .admin-sidebar nav{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+    gap:7px!important;
+    width:100%;
+    margin-top:12px!important;
+  }
+  .admin-sidebar nav button,
+  .admin-sidebar nav a{
+    width:100%!important;
+    min-width:0!important;
+    padding:10px 9px!important;
+    font-size:11px!important;
+    white-space:normal;
+    overflow-wrap:anywhere;
+  }
+  .admin-main{
+    width:100%!important;
+    max-width:none!important;
+    margin-left:0!important;
+    padding:14px!important;
+  }
+  .admin-topbar{
+    width:100%;
+    flex-direction:column!important;
+    gap:14px!important;
+  }
+  .admin-topbar h1{
+    font-size:36px!important;
+    overflow-wrap:anywhere;
+  }
+  .top-actions{
+    width:100%;
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  .top-actions>*{
+    width:100%!important;
+    max-width:none!important;
+    min-width:0!important;
+    white-space:normal!important;
+    text-align:center;
+  }
+  .metrics-grid{
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  .dashboard-grid,
+  .settings-grid{
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  .panel-card,
+  .metric-card,
+  .order-card,
+  .category-editor,
+  .product-editor{
+    width:100%;
+    min-width:0!important;
+  }
+  .panel-head,
+  .order-head,
+  .catalog-admin-intro,
+  .category-products-head,
+  .variants-header,
+  .editor-footer{
+    flex-direction:column!important;
+    align-items:stretch!important;
+  }
+  .toolbar-card,
+  .orders-toolbar{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    width:100%;
+  }
+  .toolbar-card select,
+  .toolbar-card .search-wrap,
+  .orders-toolbar select,
+  .orders-toolbar .search-wrap{
+    width:100%!important;
+    min-width:0!important;
+    max-width:none!important;
+  }
+  .order-grid{
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  .order-code{
+    min-width:0;
+    flex-wrap:wrap;
+  }
+  .order-code strong{
+    overflow-wrap:anywhere;
+  }
+  .ranking-row{
+    grid-template-columns:32px minmax(0,1fr)!important;
+  }
+  .ranking-total,
+  .ranking-row .wa-btn{
+    grid-column:2;
+    justify-self:start;
+  }
+  .customer-panel-actions,
+  .customer-report-controls{
+    width:100%!important;
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  .customer-report-controls>*{
+    width:100%!important;
+  }
+  .customer-table-wrap{
+    width:100%;
+    max-width:100%;
+    overflow-x:auto!important;
+    -webkit-overflow-scrolling:touch;
+  }
+  .customer-table{
+    min-width:700px!important;
+  }
+  .category-editor-head{
+    grid-template-columns:34px minmax(0,1fr)!important;
+    padding:14px!important;
+  }
+  .category-editor-head>.switch-row,
+  .category-actions{
+    grid-column:2!important;
+  }
+  .category-actions{
+    flex-wrap:wrap!important;
+  }
+  .category-products{
+    padding:0 12px 14px!important;
+  }
+  .product-editor-head{
+    grid-template-columns:46px minmax(0,1fr) 34px!important;
+  }
+  .product-form-grid,
+  .variant-fields,
+  .settings-inline-grid{
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  .product-photo-row{
+    grid-template-columns:70px minmax(0,1fr)!important;
+  }
+  .product-photo-preview{
+    width:70px!important;
+    height:70px!important;
+  }
+  .variant-row{
+    grid-template-columns:30px 54px minmax(0,1fr) 34px!important;
+  }
+  .variant-fields{
+    grid-column:3/-1!important;
+  }
+
+  .login-card{
+    width:100%!important;
+    max-width:430px!important;
+    padding:22px 16px!important;
+  }
+  .login-card h1{
+    font-size:34px!important;
+  }
+}
+
+/* Teléfonos muy angostos: 320–390 px */
+@media (max-width: 390px){
+  .section-shell,
+  .catalog-page-section-v9>.section-shell,
+  .home-mega-section{
+    width:calc(100% - 16px)!important;
+  }
+
+  .site-header{
+    width:calc(100% - 10px)!important;
+    padding-inline:7px!important;
+  }
+  .site-header .brand{
+    width:60px!important;
+  }
+  .site-header .status-button{
+    max-width:92px;
+    font-size:8px!important;
+    padding-inline:8px!important;
+  }
+  .site-header .cart-count{
+    width:30px!important;
+    height:30px!important;
+    flex-basis:30px;
+  }
+
+  .home-v10 .hero-v10{
+    width:calc(100% - 12px)!important;
+  }
+  .home-v10 .hero-showcase{
+    padding-inline:10px!important;
+  }
+  .home-v10 .hero-order-side h1{
+    font-size:38px!important;
+  }
+  .hero-referential-note{
+    font-size:9px!important;
+  }
+
+  .catalog-page-hero-v9{
+    padding-inline:6px!important;
+  }
+  .catalog-page-hero-inner-v9{
+    padding:20px 12px!important;
+  }
+  .catalog-page-hero-inner-v9 h1{
+    font-size:38px!important;
+  }
+  .category-public-head h3{
+    font-size:36px!important;
+  }
+  .product-card-body,
+  .spoon-card-v8 .product-card-body,
+  .mega-card .product-card-body{
+    padding-inline:13px!important;
+  }
+  .product-topline h3,
+  .mega-card .product-topline h3{
+    font-size:24px!important;
+  }
+
+  .footer-socials{
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+
+  .admin-main{
+    padding:10px!important;
+  }
+  .admin-sidebar nav{
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  .admin-topbar h1{
+    font-size:32px!important;
+  }
+  .order-card,
+  .panel-card,
+  .metric-card{
+    padding:13px!important;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div class="admin-login hidden" id="adminLogin">
+    <form class="login-card" id="adminLoginForm">
+      <img src="assets/logo.png" alt="Sweet by Sami">
+      <span class="kicker">Acceso privado</span>
+      <h1>Administración</h1>
+      <p>Acceso privado de Sweet by Sami. La contraseña se valida de forma segura con Supabase Auth.</p>
+      <label>Correo<input id="adminEmail" type="email" required autocomplete="username" value="cadenasamantha037@gmail.com"></label>
+      <label>Contraseña<input id="adminPassword" type="password" required autocomplete="current-password"></label>
+      <button class="btn btn-dark" type="submit">Ingresar</button>
+      <small id="loginError" class="login-error"></small>
+    </form>
+  </div>
+
+  <div id="adminApp" class="hidden">
+    <aside class="admin-sidebar">
+      <div class="admin-brand">
+        <img src="assets/logo.png" alt="Sweet by Sami" />
+        <div><strong>Sweet by Sami</strong><span>Administración</span></div>
+      </div>
+      <nav id="adminNav">
+        <button class="active" data-section="dashboard">Resumen</button>
+        <button data-section="orders">Pedidos <span class="nav-badge" id="pendingNavBadge">0</span></button>
+        <button data-section="customers">Clientes</button>
+        <button data-section="payments">QR y entregas</button>
+        <button data-section="products">Productos</button>
+        <a href="index.html" target="_blank">Ver tienda ↗</a>
+      </nav>
+      <div class="mode-card">
+        <span id="modeBadge">MODO DEMO</span>
+        <p id="modeText">Los cambios se guardan solo en este navegador hasta conectar Supabase.</p>
+        <button class="sidebar-link hidden" id="logoutBtn" type="button">Cerrar sesión</button>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-topbar">
+        <div>
+          <span class="kicker" id="pageKicker">Panel general</span>
+          <h1 id="pageTitle">Resumen del negocio</h1>
+          <p id="pageDescription">Controla ingresos, pagos, clientes y pedidos desde un solo lugar.</p>
+        </div>
+        <div class="top-actions">
+          <span id="alertConnectionStatus" class="alert-connection-status fallback" title="Las alertas funcionan automáticamente mientras este panel permanezca abierto">🔔 Alertas activas · conectando...</span>
+          <button class="btn btn-soft" id="refreshBtn" type="button">Actualizar</button>
+          <a href="index.html" class="btn btn-dark" target="_blank">Abrir tienda</a>
+        </div>
+      </header>
+
+      <section class="admin-section active" data-admin-section="dashboard">
+        <div class="metrics-grid">
+          <article class="metric-card"><span>Ingresos esta semana</span><strong id="weeklyIncome">Bs. 0</strong><small>Solo pagos confirmados</small></article>
+          <article class="metric-card"><span>Ingresos este mes</span><strong id="monthlyIncome">Bs. 0</strong><small>Solo pagos confirmados</small></article>
+          <article class="metric-card"><span>Pagos por revisar</span><strong id="pendingPayments">0</strong><small>QR o efectivo pendientes</small></article>
+          <article class="metric-card"><span>Clientes registrados</span><strong id="customerCount">0</strong><small>Nombres y WhatsApp guardados</small></article>
+          <article class="metric-card milestone-metric"><span>Contador de pedidos</span><strong id="lifetimeOrderCount">500</strong><small id="milestoneProgress">Rumbo al pedido #1000</small></article>
+        </div>
+
+        <div class="dashboard-grid">
+          <article class="panel-card">
+            <div class="panel-head"><div><span class="section-label">Ranking mensual</span><h2>Top 5 compradores</h2></div><span class="month-chip" id="rankingMonth"></span></div>
+            <div class="ranking-list" id="topBuyersList"></div>
+          </article>
+          <article class="panel-card">
+            <div class="panel-head"><div><span class="section-label">Actividad</span><h2>Pedidos recientes</h2></div><button class="text-button" data-go-section="orders">Ver todos</button></div>
+            <div class="recent-orders" id="recentOrders"></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="admin-section" data-admin-section="orders">
+        <div class="toolbar-card orders-toolbar">
+          <div class="search-wrap"><span>⌕</span><input id="orderSearch" placeholder="Buscar por pedido, nombre o teléfono"></div>
+          <select id="fulfillmentFilter" aria-label="Filtrar por tipo de entrega"><option value="all">Todas las entregas</option><option value="pickup">Recojo en local</option><option value="danae">Envíos al correo / DANAE</option><option value="national">Envíos nacionales</option><option value="customer_delivery">Manda tu delivery</option></select>
+          <select id="paymentFilter" aria-label="Filtrar por estado de pago"><option value="all">Todos los pagos</option><option value="pending_review">Pendientes QR</option><option value="cash_pending">Efectivo pendiente</option><option value="confirmed">Confirmados</option><option value="rejected">Con observación</option></select>
+        </div>
+        <div class="orders-list" id="ordersList"></div>
+      </section>
+
+      <section class="admin-section" data-admin-section="customers">
+        <div class="panel-card customer-panel">
+          <div class="panel-head customer-panel-head">
+            <div><span class="section-label">Base de datos</span><h2>Clientes registrados</h2></div>
+            <div class="customer-panel-actions">
+              <div class="search-wrap small"><span>⌕</span><input id="customerSearch" placeholder="Buscar cliente"></div>
+              <div class="customer-report-controls">
+                <input id="customerReportMonth" type="month" aria-label="Mes del registro de clientes">
+                <button class="btn btn-pink" id="downloadCustomersPdfBtn" type="button">Descargar registro mensual PDF</button>
+              </div>
+            </div>
+          </div>
+          <div class="customer-table-wrap">
+            <table class="customer-table">
+              <thead><tr><th>Cliente</th><th>WhatsApp</th><th>Pedidos</th><th>Total confirmado</th><th>Último pedido</th><th></th></tr></thead>
+              <tbody id="customersTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="admin-section" data-admin-section="payments">
+        <div class="settings-grid">
+          <article class="panel-card">
+            <span class="section-label">Cobros</span>
+            <h2>QR de pago</h2>
+            <p class="panel-copy">Este QR es el que verá el cliente durante el checkout.</p>
+            <div class="admin-qr-preview" id="adminQrPreview"><span>Sin QR</span></div>
+            <label class="upload-big">Cambiar QR<input id="qrFileInput" type="file" accept="image/*"></label>
+          </article>
+          <article class="panel-card settings-form-card">
+            <span class="section-label">Checkout</span>
+            <h2>Entregas, horarios y contador</h2>
+            <label>Punto de recojo<input id="pickupAddressInput" placeholder="Sweet by Sami · Cochabamba"></label>
+            <label>Google Maps · recojo en local<input id="pickupMapUrlInput" placeholder="https://maps.app.goo.gl/..."></label>
+            <label>Horario de recojo<input id="pickupHoursInput" placeholder="7:30 a 9:00 am · 2:00 a 3:00 pm"></label>
+            <label>Google Maps · Paquetería DANAE<input id="danaeMapUrlInput" placeholder="https://maps.app.goo.gl/..."></label>
+            <label>Datos DANAE<input id="danaeLocationInput" placeholder="Paquetería DANAE · 1er piso · local 20"></label>
+            <label>Horario DANAE<input id="danaeHoursInput" placeholder="Lunes a viernes · 8:00 am a 8:30 pm"></label>
+            <div class="settings-inline-grid">
+              <label>WhatsApp coordinación 1<input id="coordPhone1Input" inputmode="tel" placeholder="59172947659"></label>
+              <label>WhatsApp coordinación 2<input id="coordPhone2Input" inputmode="tel" placeholder="59164329209"></label>
+            </div>
+            <div class="settings-inline-grid">
+              <label>Pedidos anteriores al sistema<input id="historicalOrderCountInput" type="number" min="0" step="1" placeholder="500"></label>
+              <label>Hito especial<input id="milestoneTargetInput" type="number" min="1" step="1" placeholder="1000"></label>
+            </div>
+            <p class="panel-copy">Ajusta “Pedidos anteriores al sistema” al número real antes de publicar. Los pedidos nuevos se suman automáticamente y el pedido #1000 activa la celebración.</p>
+            <label>Instrucciones de pago<textarea id="paymentInstructionsInput" rows="4" placeholder="Texto que verá el cliente debajo del QR"></textarea></label>
+            <button class="btn btn-dark" id="saveSettingsBtn" type="button">Guardar configuración</button>
+            <small class="save-status" id="settingsSaveStatus"></small>
+          </article>
+        </div>
+      </section>
+
+      <section class="admin-section" data-admin-section="products">
+        <section class="catalog-admin-intro">
+          <div>
+            <span class="section-label">Catálogo flexible</span>
+            <h2>Organiza la tienda por categorías</h2>
+            <p>Crea categorías como Scoops, Cajas, Regalos o Temporada. Dentro de cada una puedes añadir todos los items que quieras y cada item conserva sus variantes dinámicas.</p>
+          </div>
+          <button class="btn btn-pink" id="addCategoryBtn" type="button">+ Crear categoría</button>
+        </section>
+        <section class="notice">
+          <strong>Cómo funciona</strong>
+          <p>Las categorías y productos visibles aparecen automáticamente en la tienda. Puedes dejar una sola variante activa o añadir más en cualquier momento sin tocar el código.</p>
+        </section>
+        <section class="category-admin-list" id="adminCategoryList"></section>
+        <div class="product-reset-row"><button class="btn btn-soft" id="resetDemoBtn" type="button">Restaurar catálogo demo</button></div>
+      </section>
+    </main>
+  </div>
+
+  <div class="receipt-lightbox hidden" id="receiptLightbox">
+    <div class="receipt-lightbox-card">
+      <button id="closeReceiptLightbox" class="modal-x" type="button">×</button>
+      <span class="section-label">Comprobante</span>
+      <h2 id="receiptOrderTitle">Pedido</h2>
+      <div class="receipt-image-wrap"><img id="receiptLightboxImage" alt="Comprobante de pago"></div>
+    </div>
+  </div>
+
+  <template id="categoryEditorTemplate">
+    <article class="category-editor">
+      <div class="category-editor-head">
+        <div class="category-order">
+          <button type="button" class="js-category-up" title="Subir categoría">↑</button>
+          <button type="button" class="js-category-down" title="Bajar categoría">↓</button>
+        </div>
+        <div class="category-title-fields">
+          <span class="section-label">Categoría</span>
+          <input class="category-title-input js-category-name" placeholder="Nombre de la categoría" />
+          <input class="category-description-input js-category-description" placeholder="Descripción breve que verá el cliente" />
+        </div>
+        <label class="switch-row"><span>Visible</span><input type="checkbox" class="js-category-active"><i></i></label>
+        <div class="category-actions">
+          <button class="btn btn-soft js-save-category" type="button">Guardar categoría</button>
+          <button class="danger-text-btn js-delete-category" type="button">Eliminar</button>
+        </div>
+      </div>
+      <div class="category-products-head">
+        <div><span class="section-label">Items</span><h3>Productos de esta categoría</h3></div>
+        <button class="btn btn-pink js-add-product" type="button">+ Añadir item</button>
+      </div>
+      <div class="category-products js-category-products"></div>
+      <div class="empty-category js-empty-category hidden">Esta categoría todavía no tiene items.</div>
+    </article>
+  </template>
+
+  <template id="productEditorTemplate">
+    <article class="product-editor">
+      <div class="product-editor-head">
+        <div class="product-badge"></div>
+        <div class="product-title-wrap"><input class="title-input js-name" /><input class="subtitle-input js-subtitle" /></div>
+        <label class="switch-row"><span>Visible</span><input type="checkbox" class="js-active"><i></i></label>
+        <button class="remove-product js-remove-product" type="button" title="Eliminar item">×</button>
+      </div>
+      <div class="product-form-grid">
+        <label>Precio<div class="money-field"><span>Bs.</span><input class="js-price" type="number" min="0" step="1"></div></label>
+        <label>Letra / ícono<input class="js-short-name" maxlength="3"></label>
+        <label>Categoría<select class="js-category-select"></select></label>
+        <label class="wide">Descripción<textarea class="js-description" rows="2"></textarea></label>
+      </div>
+      <div class="product-photo-row">
+        <div class="product-photo-preview js-product-photo"><span>Sin foto</span></div>
+        <div>
+          <span class="section-label">Foto de tarjeta</span>
+          <p>Esta es la imagen principal que aparece en el catálogo.</p>
+          <label class="file-label">Cambiar foto<input type="file" class="js-product-file" accept="image/*"></label>
+        </div>
+      </div>
+      <div class="variants-header"><div><span class="section-label">Variantes</span><h3>Presentaciones de este item</h3></div><button class="btn btn-pink js-add-variant" type="button">+ Añadir variante</button></div>
+      <div class="variants-list js-variants-list"></div>
+      <div class="editor-footer"><span class="save-status js-save-status"></span><button class="btn btn-dark js-save-product" type="button">Guardar item</button></div>
+    </article>
+  </template>
+
+  <template id="variantTemplate">
+    <div class="variant-row">
+      <div class="variant-order"><button type="button" class="js-up" title="Subir">↑</button><button type="button" class="js-down" title="Bajar">↓</button></div>
+      <div class="variant-photo js-photo-preview"><span>Sin foto</span></div>
+      <div class="variant-fields"><input class="js-variant-name" placeholder="Nombre de la variante"><input class="js-variant-description" placeholder="Descripción corta"><label class="file-label">Cambiar foto<input type="file" class="js-variant-file" accept="image/*"></label></div>
+      <label class="switch-row mini"><span>Visible</span><input type="checkbox" class="js-variant-active"><i></i></label>
+      <button type="button" class="remove-variant js-remove-variant" title="Eliminar">×</button>
+    </div>
+  </template>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.2/dist/jspdf.plugin.autotable.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+Sweet by Sami · V29 Responsive
+
+Cambios:
+- Responsive reforzado en página principal, catálogo, checkout, modales y administrador.
+- Corrección específica del desbordamiento horizontal del catálogo en celulares de 320–430 px.
+- Mega Caja: botón “Mira cómo se prepara” junto a “Ver Mega Caja”, enlazado al video de TikTok indicado.
+- No requiere cambios SQL ni migraciones nuevas.

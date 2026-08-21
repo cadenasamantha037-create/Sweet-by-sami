@@ -1,0 +1,9 @@
+Sweet by Sami · V31
+
+Cambios:
+- Carrito multi-producto con controles + / − / eliminar por producto.
+- Botones Seguir comprando y Realizar pedido ahora.
+- Entregas convertidas en acordeón: solo se muestran los datos de la opción elegida y aparecen justo debajo.
+- Recojo en local y Manda tu delivery muestran inmediatamente la ubicación de Sweet by Sami al seleccionarlos.
+- Armado en LIVE enlaza al grupo oficial de WhatsApp para consultar horarios.
+- No requiere cambios SQL.

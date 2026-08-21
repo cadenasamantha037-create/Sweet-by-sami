@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /admin-sami.html
+Disallow: /admin-sami

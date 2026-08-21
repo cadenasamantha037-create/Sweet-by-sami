@@ -1,0 +1,9 @@
+Sweet by Sami V32
+
+- Cada producto del carrito muestra controles − cantidad + claramente al lado del item.
+- El botón − reduce una unidad; al llegar a 0 se elimina del carrito.
+- El botón + añade otra unidad del mismo producto/variante.
+- Se mantiene el botón Seguir comprando.
+- Se mantiene Realizar pedido ahora con todos los productos del carrito.
+- Ajuste responsive de los controles para móvil.
+- No requiere cambios SQL.

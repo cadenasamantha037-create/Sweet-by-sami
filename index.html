@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f7dce6" />
+  <title>Sweet by Sami</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/metallic-theme.css" />
+  <link rel="stylesheet" href="css/v9-pages.css" />
+  <link rel="stylesheet" href="css/v10-home.css" />
+  <link rel="stylesheet" href="css/v26-final.css" />
+
+  <style id="sweet-v30-responsive-inline">
+  /* Sweet by Sami V30 · responsive embebido para Netlify */
+/* =========================================================
+   SWEET BY SAMI · V29 RESPONSIVE FINAL
+   Override final cargado después de los estilos anteriores.
+   Objetivo: cero desbordamiento horizontal en móvil/tablet,
+   manteniendo la composición de escritorio.
+   ========================================================= */
+
+html,
+body{
+  width:100%;
+  max-width:100%;
+  overflow-x:clip;
+}
+
+img,
+svg,
+video,
+canvas,
+iframe{
+  max-width:100%;
+}
+
+main,
+section,
+article,
+header,
+footer,
+nav,
+form,
+fieldset,
+div{
+  min-width:0;
+}
+
+button,
+input,
+textarea,
+select,
+a{
+  min-width:0;
+}
+
+/* Mega Caja: dos acciones en paralelo en escritorio. */
+.home-mega-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.home-mega-actions .button{
+  margin:0;
+}
+.home-mega-video-btn{
+  color:#c84a78!important;
+  border-color:rgba(213,79,127,.22)!important;
+  background:#fff!important;
+  box-shadow:0 9px 22px rgba(128,54,78,.07)!important;
+  white-space:nowrap;
+}
+.home-mega-video-btn:hover{
+  border-color:rgba(213,79,127,.42)!important;
+  background:#fff7fa!important;
+}
+
+/* Evita que textos largos rompan grids/flex. */
+.category-public-head p,
+.product-card p,
+.hero-lead,
+.hero-brand-note,
+.checkout-card,
+.order-card,
+.panel-card,
+.delivery-address-box,
+.map-place-card,
+.national-recipient-admin{
+  overflow-wrap:anywhere;
+  word-break:normal;
+}
+
+/* Tablet general */
+@media (max-width: 1024px){
+  .section-shell{
+    width:min(100% - 32px,1160px)!important;
+  }
+
+  .site-header{
+    width:calc(100% - 24px)!important;
+    grid-template-columns:minmax(0,1fr) auto!important;
+  }
+
+  .desktop-nav{display:none!important}
+
+  .home-mega-card{
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  .home-mega-copy{
+    text-align:center;
+  }
+  .home-mega-actions{
+    justify-content:center;
+  }
+
+  .catalog-page-hero-inner-v9{
+    width:100%!important;
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+
+  .category-public-head{
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  .category-public-head p{
+    max-width:760px;
+  }
+
+  .product-grid{
+    grid-template-columns:minmax(0,1fr)!important;
+    width:100%;
+    max-width:720px!important;
+    margin-inline:auto;
+  }
+
+  .product-card,
+  .mega-card{
+    width:100%;
+    max-width:100%;
+  }
+
+  .admin-main{
+    width:100%;
+    max-width:none;
+  }
+}
+
+/* Celular / tablet vertical */
+@media (max-width: 760px){
+  body{
+    overflow-x:hidden;
+  }
+
+  .section-shell{
+    width:calc(100% - 24px)!important;
+    max-width:none!important;
+  }
+
+  .candy-rail{
+    width:24px!important;
+    opacity:.2!important;
+  }
+
+  /* Header público */
+  .site-header{
+    width:calc(100% - 16px)!important;
+    height:auto!important;
+    min-height:64px;
+    top:8px!important;
+    margin-top:8px!important;
+    padding:7px 8px 7px 10px!important;
+    border-radius:19px!important;
+    grid-template-columns:minmax(0,1fr) auto!important;
+    gap:8px;
+  }
+  .site-header .brand{
+    width:68px!important;
+    height:48px!important;
+  }
+  .site-header .brand img{
+    width:100%!important;
+    height:100%!important;
+    object-fit:contain!important;
+  }
+  .site-header .header-actions{
+    gap:6px!important;
+    max-width:100%;
+  }
+  .site-header .cart-button{
+    padding:7px!important;
+    gap:0!important;
+  }
+  .site-header .cart-button>span:first-child{
+    display:none!important;
+  }
+  .site-header .cart-count{
+    width:32px!important;
+    height:32px!important;
+    flex:0 0 32px;
+  }
+  .site-header .status-button{
+    min-height:40px;
+    max-width:105px;
+    padding:8px 10px!important;
+    font-size:9px!important;
+    line-height:1.15;
+    white-space:normal;
+  }
+
+  /* HOME */
+  .home-v10 .hero-v10{
+    width:calc(100% - 20px)!important;
+    padding-top:22px!important;
+    padding-bottom:52px!important;
+  }
+  .home-v10 .hero-showcase{
+    width:100%!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    padding:20px 14px 68px!important;
+    border-radius:28px!important;
+    overflow:hidden;
+  }
+  .home-v10 .hero-logo-stage{
+    width:min(100%,320px)!important;
+  }
+  .home-v10 .hero-order-side{
+    width:100%;
+    padding:10px 0!important;
+  }
+  .home-v10 .hero-order-side h1{
+    width:100%;
+    max-width:none!important;
+    font-size:clamp(38px,12vw,54px)!important;
+  }
+  .home-v10 .hero-order-side h1 span{
+    white-space:normal!important;
+  }
+  .home-v10 .hero-lead,
+  .home-v10 .hero-brand-note{
+    width:100%;
+    max-width:none;
+  }
+  .home-v10 .hero-spoon-options{
+    width:100%;
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  .home-v10 .hero-spoon-choice{
+    width:100%;
+    max-width:100%;
+  }
+  .home-v10 .hero-actions-v5{
+    width:100%;
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+
+  .home-mega-section{
+    width:calc(100% - 24px)!important;
+  }
+  .home-mega-card{
+    width:100%;
+    grid-template-columns:minmax(0,1fr)!important;
+    padding:11px!important;
+    border-radius:25px!important;
+    gap:10px!important;
+  }
+  .home-mega-media{
+    width:100%;
+    min-height:0!important;
+    aspect-ratio:1.25;
+    border-radius:19px!important;
+  }
+  .home-mega-media img{
+    width:100%!important;
+    height:100%!important;
+    object-fit:contain!important;
+  }
+  .home-mega-copy{
+    width:100%;
+    padding:14px 10px 20px!important;
+  }
+  .home-mega-copy h2{
+    font-size:40px!important;
+  }
+  .home-mega-actions{
+    display:grid;
+    grid-template-columns:minmax(0,1fr);
+    width:100%;
+    gap:8px;
+  }
+  .home-mega-actions .button{
+    width:100%!important;
+    white-space:normal;
+    text-align:center;
+  }
+
+  .steps-grid{
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  .step-card{
+    width:100%;
+  }
+
+  /* CATÁLOGO: fix principal del desbordamiento mostrado en móvil */
+  .catalog-page-hero-v9{
+    width:100%;
+    padding:20px 10px 14px!important;
+  }
+  .catalog-page-hero-inner-v9{
+    width:100%!important;
+    max-width:100%!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    padding:24px 16px!important;
+    border-radius:24px!important;
+    overflow:hidden;
+  }
+  .catalog-page-hero-inner-v9>div{
+    width:100%;
+  }
+  .catalog-page-hero-inner-v9 h1{
+    font-size:clamp(38px,12vw,50px)!important;
+    overflow-wrap:anywhere;
+  }
+  .catalog-page-hero-inner-v9 p{
+    width:100%;
+    max-width:none!important;
+    font-size:13px;
+  }
+  .catalog-page-hero-inner-v9 img{
+    width:min(190px,64%)!important;
+  }
+
+  .catalog-page-section-v9{
+    width:100%;
+    padding:54px 0 70px!important;
+    overflow:hidden;
+  }
+  .catalog-page-section-v9>.section-shell{
+    width:calc(100% - 20px)!important;
+    max-width:none!important;
+  }
+  .catalog-page-tools-v9{
+    width:100%;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:flex-start!important;
+    gap:14px!important;
+    padding-bottom:24px!important;
+  }
+  .catalog-page-tools-v9>span{
+    width:100%;
+    font-size:11px;
+    line-height:1.45;
+    white-space:normal;
+  }
+  .catalog-back-link-v9{
+    max-width:100%;
+    white-space:normal;
+  }
+  .catalog-sections,
+  .catalog-category{
+    width:100%;
+    max-width:100%;
+    min-width:0!important;
+  }
+  .catalog-sections{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:48px!important;
+  }
+  .category-public-head{
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+    grid-template-columns:none!important;
+    gap:0!important;
+    margin-bottom:18px!important;
+    padding-bottom:16px!important;
+  }
+  .category-public-head>div,
+  .category-public-head>p{
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+  }
+  .category-public-head h3{
+    font-size:clamp(34px,11vw,46px)!important;
+    line-height:1.05;
+  }
+  .category-public-head p{
+    margin-top:9px!important;
+    font-size:12px!important;
+    line-height:1.6!important;
+  }
+
+  .product-grid{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    width:100%!important;
+    max-width:none!important;
+    margin:0!important;
+    gap:16px!important;
+  }
+  .product-card,
+  .spoon-card-v8,
+  .mega-card{
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    grid-column:auto!important;
+    border-radius:24px!important;
+    overflow:hidden!important;
+  }
+  .product-image,
+  .spoon-card-v8 .product-image,
+  .mega-card .product-image{
+    width:100%!important;
+    min-width:0!important;
+    min-height:0!important;
+    aspect-ratio:1.18!important;
+    padding:8px!important;
+    border-right:0!important;
+    border-bottom:1px solid rgba(218,88,137,.1)!important;
+  }
+  .product-image img,
+  .spoon-card-v8 .product-image img,
+  .mega-card .product-image img{
+    width:100%!important;
+    height:100%!important;
+    object-fit:cover!important;
+  }
+  .mega-card .product-image img{
+    object-fit:contain!important;
+  }
+  .product-card-body,
+  .spoon-card-v8 .product-card-body,
+  .mega-card .product-card-body{
+    width:100%!important;
+    padding:18px 16px 19px!important;
+  }
+  .product-topline,
+  .mega-card .product-topline{
+    width:100%;
+    min-width:0;
+    flex-wrap:wrap;
+    gap:8px!important;
+  }
+  .product-topline h3,
+  .mega-card .product-topline h3{
+    max-width:100%;
+    font-size:26px!important;
+  }
+  .product-price{
+    max-width:100%;
+  }
+
+  /* Producto, carrito y estado */
+  .modal-backdrop,
+  .checkout-backdrop,
+  .status-backdrop{
+    padding:0!important;
+    align-items:flex-end!important;
+  }
+  .product-modal,
+  .status-modal,
+  .checkout-modal{
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+  }
+  .product-modal{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    border-radius:24px 24px 0 0!important;
+    max-height:96dvh!important;
+    overflow:auto!important;
+  }
+  .modal-media{
+    width:100%;
+    min-height:0!important;
+    padding:12px!important;
+  }
+  .product-photo-shell{
+    width:100%;
+    min-height:245px!important;
+  }
+  .modal-content{
+    width:100%;
+    padding:24px 16px 22px!important;
+  }
+  .modal-content h2{
+    font-size:38px!important;
+  }
+  .variant-heading{
+    flex-direction:column!important;
+    align-items:flex-start!important;
+    gap:4px;
+  }
+  .variant-pills{
+    width:100%;
+  }
+  .variant-pill{
+    max-width:100%;
+    white-space:normal;
+  }
+
+  .cart-drawer{
+    width:100%!important;
+    max-width:100%!important;
+    padding:18px 14px!important;
+  }
+  .cart-item{
+    grid-template-columns:48px minmax(0,1fr) auto!important;
+  }
+  .cart-info{
+    min-width:0;
+  }
+  .cart-info strong,
+  .cart-info span{
+    overflow-wrap:anywhere;
+  }
+
+  .checkout-modal{
+    border-radius:24px 24px 0 0!important;
+    padding:16px 10px!important;
+    max-height:97dvh!important;
+    overflow:auto!important;
+  }
+  .checkout-head{
+    padding:14px 42px 16px 4px!important;
+  }
+  .checkout-head h2{
+    font-size:34px!important;
+  }
+  .checkout-card{
+    width:100%;
+    min-width:0!important;
+    padding:14px!important;
+    border-radius:18px!important;
+  }
+  .form-grid,
+  .form-grid.two,
+  .fulfillment-options,
+  .fulfillment-options-four,
+  .preparation-options,
+  .payment-method-options,
+  .payment-layout{
+    grid-template-columns:minmax(0,1fr)!important;
+    width:100%;
+  }
+  .checkout-card input,
+  .checkout-card textarea,
+  .checkout-card select,
+  .phone-prefix-field{
+    max-width:100%;
+  }
+  .phone-prefix-field{
+    grid-template-columns:auto minmax(0,1fr)!important;
+  }
+  .map-place-card{
+    align-items:flex-start!important;
+    width:100%;
+  }
+  .map-place-card>div{
+    min-width:0!important;
+  }
+  .pickup-whatsapp-actions{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  .pickup-whatsapp-actions a,
+  .cash-whatsapp-action{
+    width:100%;
+    max-width:100%;
+    text-align:center;
+    white-space:normal;
+  }
+  .payment-layout{
+    gap:14px!important;
+  }
+  .qr-shell-wrap,
+  .payment-info{
+    width:100%;
+  }
+  .qr-shell{
+    width:min(100%,280px)!important;
+    margin-inline:auto;
+  }
+  .receipt-preview{
+    grid-template-columns:64px minmax(0,1fr)!important;
+  }
+  .receipt-preview img{
+    width:64px!important;
+    height:64px!important;
+  }
+  .checkout-item,
+  .checkout-total-row,
+  .pay-total{
+    min-width:0;
+  }
+
+  .status-modal{
+    border-radius:24px 24px 0 0!important;
+    padding:26px 16px!important;
+  }
+
+  /* Footer */
+  .site-footer{
+    width:calc(100% - 24px)!important;
+    max-width:none!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    text-align:center!important;
+    gap:18px!important;
+  }
+  .footer-brand-block{
+    width:100%;
+    min-width:0!important;
+    justify-content:center!important;
+    flex-direction:column!important;
+  }
+  .footer-socials{
+    width:100%;
+    margin-left:0!important;
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+  }
+  .footer-socials a{
+    width:100%;
+    min-width:0;
+    padding-inline:10px!important;
+  }
+  .footer-note{
+    width:100%;
+    text-align:center!important;
+  }
+
+  /* ADMIN */
+  .admin-sidebar{
+    position:static!important;
+    width:100%!important;
+    height:auto!important;
+    padding:12px!important;
+    overflow:hidden;
+  }
+  .admin-brand{
+    padding-bottom:12px!important;
+  }
+  .admin-brand img{
+    width:66px!important;
+    height:54px!important;
+  }
+  .admin-sidebar nav{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+    gap:7px!important;
+    width:100%;
+    margin-top:12px!important;
+  }
+  .admin-sidebar nav button,
+  .admin-sidebar nav a{
+    width:100%!important;
+    min-width:0!important;
+    padding:10px 9px!important;
+    font-size:11px!important;
+    white-space:normal;
+    overflow-wrap:anywhere;
+  }
+  .admin-main{
+    width:100%!important;
+    max-width:none!important;
+    margin-left:0!important;
+    padding:14px!important;
+  }
+  .admin-topbar{
+    width:100%;
+    flex-direction:column!important;
+    gap:14px!important;
+  }
+  .admin-topbar h1{
+    font-size:36px!important;
+    overflow-wrap:anywhere;
+  }
+  .top-actions{
+    width:100%;
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  .top-actions>*{
+    width:100%!important;
+    max-width:none!important;
+    min-width:0!important;
+    white-space:normal!important;
+    text-align:center;
+  }
+  .metrics-grid{
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  .dashboard-grid,
+  .settings-grid{
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  .panel-card,
+  .metric-card,
+  .order-card,
+  .category-editor,
+  .product-editor{
+    width:100%;
+    min-width:0!important;
+  }
+  .panel-head,
+  .order-head,
+  .catalog-admin-intro,
+  .category-products-head,
+  .variants-header,
+  .editor-footer{
+    flex-direction:column!important;
+    align-items:stretch!important;
+  }
+  .toolbar-card,
+  .orders-toolbar{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    width:100%;
+  }
+  .toolbar-card select,
+  .toolbar-card .search-wrap,
+  .orders-toolbar select,
+  .orders-toolbar .search-wrap{
+    width:100%!important;
+    min-width:0!important;
+    max-width:none!important;
+  }
+  .order-grid{
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  .order-code{
+    min-width:0;
+    flex-wrap:wrap;
+  }
+  .order-code strong{
+    overflow-wrap:anywhere;
+  }
+  .ranking-row{
+    grid-template-columns:32px minmax(0,1fr)!important;
+  }
+  .ranking-total,
+  .ranking-row .wa-btn{
+    grid-column:2;
+    justify-self:start;
+  }
+  .customer-panel-actions,
+  .customer-report-controls{
+    width:100%!important;
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  .customer-report-controls>*{
+    width:100%!important;
+  }
+  .customer-table-wrap{
+    width:100%;
+    max-width:100%;
+    overflow-x:auto!important;
+    -webkit-overflow-scrolling:touch;
+  }
+  .customer-table{
+    min-width:700px!important;
+  }
+  .category-editor-head{
+    grid-template-columns:34px minmax(0,1fr)!important;
+    padding:14px!important;
+  }
+  .category-editor-head>.switch-row,
+  .category-actions{
+    grid-column:2!important;
+  }
+  .category-actions{
+    flex-wrap:wrap!important;
+  }
+  .category-products{
+    padding:0 12px 14px!important;
+  }
+  .product-editor-head{
+    grid-template-columns:46px minmax(0,1fr) 34px!important;
+  }
+  .product-form-grid,
+  .variant-fields,
+  .settings-inline-grid{
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  .product-photo-row{
+    grid-template-columns:70px minmax(0,1fr)!important;
+  }
+  .product-photo-preview{
+    width:70px!important;
+    height:70px!important;
+  }
+  .variant-row{
+    grid-template-columns:30px 54px minmax(0,1fr) 34px!important;
+  }
+  .variant-fields{
+    grid-column:3/-1!important;
+  }
+
+  .login-card{
+    width:100%!important;
+    max-width:430px!important;
+    padding:22px 16px!important;
+  }
+  .login-card h1{
+    font-size:34px!important;
+  }
+}
+
+/* Teléfonos muy angostos: 320–390 px */
+@media (max-width: 390px){
+  .section-shell,
+  .catalog-page-section-v9>.section-shell,
+  .home-mega-section{
+    width:calc(100% - 16px)!important;
+  }
+
+  .site-header{
+    width:calc(100% - 10px)!important;
+    padding-inline:7px!important;
+  }
+  .site-header .brand{
+    width:60px!important;
+  }
+  .site-header .status-button{
+    max-width:92px;
+    font-size:8px!important;
+    padding-inline:8px!important;
+  }
+  .site-header .cart-count{
+    width:30px!important;
+    height:30px!important;
+    flex-basis:30px;
+  }
+
+  .home-v10 .hero-v10{
+    width:calc(100% - 12px)!important;
+  }
+  .home-v10 .hero-showcase{
+    padding-inline:10px!important;
+  }
+  .home-v10 .hero-order-side h1{
+    font-size:38px!important;
+  }
+  .hero-referential-note{
+    font-size:9px!important;
+  }
+
+  .catalog-page-hero-v9{
+    padding-inline:6px!important;
+  }
+  .catalog-page-hero-inner-v9{
+    padding:20px 12px!important;
+  }
+  .catalog-page-hero-inner-v9 h1{
+    font-size:38px!important;
+  }
+  .category-public-head h3{
+    font-size:36px!important;
+  }
+  .product-card-body,
+  .spoon-card-v8 .product-card-body,
+  .mega-card .product-card-body{
+    padding-inline:13px!important;
+  }
+  .product-topline h3,
+  .mega-card .product-topline h3{
+    font-size:24px!important;
+  }
+
+  .footer-socials{
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+
+  .admin-main{
+    padding:10px!important;
+  }
+  .admin-sidebar nav{
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  .admin-topbar h1{
+    font-size:32px!important;
+  }
+  .order-card,
+  .panel-card,
+  .metric-card{
+    padding:13px!important;
+  }
+}
+
+  </style>
+</head>
+<body class="home-v10">
+  <div class="candy-rail candy-rail-left" aria-hidden="true"></div>
+  <div class="candy-rail candy-rail-right" aria-hidden="true"></div>
+
+  <header class="site-header v10-header">
+    <a class="brand" href="index.html" aria-label="Sweet by Sami, inicio">
+      <img src="assets/logo.png" alt="Sweet by Sami" />
+    </a>
+    <nav class="desktop-nav" aria-label="Navegación principal">
+      <a href="index.html" class="active-link">Inicio</a>
+      <a href="catalogo.html">Catálogo</a>
+      <a href="#como-funciona">Cómo funciona</a>
+    </nav>
+    <div class="header-actions">
+      <a class="cart-button v10-cart-link" href="catalogo.html" aria-label="Ir a mi pedido en el catálogo">
+        <span>Mi pedido</span>
+        <span class="cart-count">0</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-v5 section-shell hero-v10" id="inicio">
+      <div class="hero-showcase">
+        <span class="hero-pearl hero-pearl-1" aria-hidden="true"></span>
+        <span class="hero-pearl hero-pearl-2" aria-hidden="true"></span>
+        <span class="hero-pearl hero-pearl-3" aria-hidden="true"></span>
+        <span class="hero-pearl hero-pearl-4" aria-hidden="true"></span>
+        <span class="hero-spark hero-spark-1" aria-hidden="true">✦</span>
+        <span class="hero-spark hero-spark-2" aria-hidden="true">✦</span>
+
+        <div class="hero-brand-side">
+          <div class="hero-logo-stage">
+            <div class="hero-logo-ring" aria-hidden="true"></div>
+            <img src="assets/logo.png" alt="Sweet by Sami" class="hero-logo-main" />
+          </div>
+          <div class="hero-recognition-line">
+            <span></span>
+            <strong>Scoops de dulces</strong>
+            <span></span>
+          </div>
+          <p class="hero-brand-note">La experiencia de dulces, perlitas y sorpresas que ya conoces, ahora en nuestra tienda.</p>
+        </div>
+
+        <div class="hero-order-side">
+          <span class="eyebrow hero-eyebrow">Dulces · sorpresa · un poquito de suerte</span>
+          <h1><span>Elije tu Scoop</span><em>y vive la dulce sorpresa.</em></h1>
+          <p class="hero-lead">Cada perlita representa una golosina. Elige el tamaño que más te guste y descubre qué sorpresas llegan en tu cajita.</p>
+
+          <div class="hero-spoon-options" aria-label="Tamaños de Scoop">
+            <a class="hero-spoon-choice" href="catalogo.html?producto=p#catalogo" aria-label="Ver Scoop P, 45 bolivianos">
+              <span class="hero-spoon-letter">P</span>
+              <span class="hero-spoon-meta"><small>Scoop</small><strong>Bs. 45</strong></span>
+            </a>
+            <a class="hero-spoon-choice" href="catalogo.html?producto=m#catalogo" aria-label="Ver Scoop M, 75 bolivianos">
+              <span class="hero-spoon-letter">M</span>
+              <span class="hero-spoon-meta"><small>Scoop</small><strong>Bs. 75</strong></span>
+            </a>
+            <a class="hero-spoon-choice" href="catalogo.html?producto=g#catalogo" aria-label="Ver Scoop G, 145 bolivianos">
+              <span class="hero-spoon-letter">G</span>
+              <span class="hero-spoon-meta"><small>Scoop</small><strong>Bs. 145</strong></span>
+            </a>
+          </div>
+
+          <div class="hero-actions-v5">
+            <a href="catalogo.html" class="button button-primary v10-solid-primary">Hacer mi pedido</a>
+            <a href="#como-funciona" class="button button-ghost">Ver cómo funciona</a>
+          </div>
+          <div class="hero-referential-note"><span>♡</span> Las fotografías y contenidos son referenciales: cada experiencia puede ser diferente.</div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="home-mega-section section-shell" id="mega-caja">
+      <div class="home-mega-card">
+        <div class="home-mega-media">
+          <span class="home-mega-kicker">La experiencia más grande</span>
+          <img src="assets/mega-caja.png" alt="Mega Caja Sweet by Sami con dulces y bebidas" />
+        </div>
+        <div class="home-mega-copy">
+          <span class="eyebrow">También disponible</span>
+          <h2>Mega Caja</h2>
+          <p>Una caja especial con productos completos, snacks, dulces y sorpresas para disfrutar a lo grande.</p>
+          <div class="home-mega-price">Bs. 250</div>
+          <div class="home-mega-actions">
+            <a href="catalogo.html?producto=mega-box#catalogo" class="button button-primary v10-solid-primary">Ver Mega Caja <span>→</span></a>
+            <a href="https://www.tiktok.com/@sweet_by.sami/video/7672940898900102418?is_from_webapp=1&amp;sender_device=pc&amp;web_id=7633673322001221141" class="button button-ghost home-mega-video-btn" target="_blank" rel="noopener noreferrer">Mira cómo se prepara <span>▶</span></a>
+          </div>
+          <small>Imagen referencial. El contenido puede variar según disponibilidad.</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="how-section section-shell how-section-v10" id="como-funciona">
+      <div class="section-heading compact">
+        <span class="eyebrow">Así de fácil</span>
+        <h2>¿Cómo funciona?</h2>
+        <p class="how-intro-v8">Elige tu Scoop, selecciona su presentación y completa tu pedido con pago por QR.</p>
+      </div>
+      <div class="steps-grid">
+        <article class="step-card"><span class="step-number">01</span><div class="step-icon">◌</div><h3>Elige tu Scoop</h3><p>Escoge P, M o G según el tamaño de experiencia que quieras.</p></article>
+        <article class="step-card"><span class="step-number">02</span><div class="step-icon">●</div><h3>Elige tu cajita</h3><p>Selecciona una de las variantes disponibles para ese tamaño.</p></article>
+        <article class="step-card"><span class="step-number">03</span><div class="step-icon">✦</div><h3>Descubre tus perlitas</h3><p>Cada perlita equivale a una golosina. El resultado siempre puede cambiar.</p></article>
+        <article class="step-card"><span class="step-number">04</span><div class="step-icon">♡</div><h3>Recibe tu sorpresa</h3><p>Preparamos tu cajita Sweet by Sami con todo lo que te haya tocado.</p></article>
+      </div>
+      <div class="home-catalog-action-v9">
+        <a href="catalogo.html" class="button button-primary v10-solid-primary home-catalog-button-v9">Ver catálogo <span>→</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-brand-block"><img src="assets/logo.png" alt="Sweet by Sami" /><p>Una dulce sorpresa en cada Scoop.</p></div>
+    <div class="footer-socials" aria-label="Redes sociales de Sweet by Sami">
+      <a href="https://www.instagram.com/sweet_by_sami/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://www.tiktok.com/@sweet_by.sami?is_from_webapp=1&amp;sender_device=pc" target="_blank" rel="noopener noreferrer">TikTok</a>
+    </div>
+    <p class="footer-note">Sweet by Sami · Bolivia</p>
+  </footer>
+</body>
+</html>

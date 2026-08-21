@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f7dce6" />
+  <title>Catálogo · Sweet by Sami</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/metallic-theme.css" />
+  <link rel="stylesheet" href="css/v9-pages.css" />
+  <link rel="stylesheet" href="css/v26-final.css" />
+
+  <style id="sweet-v30-responsive-inline">
+  /* Sweet by Sami V30 · responsive embebido para Netlify */
+/* =========================================================
+   SWEET BY SAMI · V29 RESPONSIVE FINAL
+   Override final cargado después de los estilos anteriores.
+   Objetivo: cero desbordamiento horizontal en móvil/tablet,
+   manteniendo la composición de escritorio.
+   ========================================================= */
+
+html,
+body{
+  width:100%;
+  max-width:100%;
+  overflow-x:clip;
+}
+
+img,
+svg,
+video,
+canvas,
+iframe{
+  max-width:100%;
+}
+
+main,
+section,
+article,
+header,
+footer,
+nav,
+form,
+fieldset,
+div{
+  min-width:0;
+}
+
+button,
+input,
+textarea,
+select,
+a{
+  min-width:0;
+}
+
+/* Mega Caja: dos acciones en paralelo en escritorio. */
+.home-mega-actions{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.home-mega-actions .button{
+  margin:0;
+}
+.home-mega-video-btn{
+  color:#c84a78!important;
+  border-color:rgba(213,79,127,.22)!important;
+  background:#fff!important;
+  box-shadow:0 9px 22px rgba(128,54,78,.07)!important;
+  white-space:nowrap;
+}
+.home-mega-video-btn:hover{
+  border-color:rgba(213,79,127,.42)!important;
+  background:#fff7fa!important;
+}
+
+/* Evita que textos largos rompan grids/flex. */
+.category-public-head p,
+.product-card p,
+.hero-lead,
+.hero-brand-note,
+.checkout-card,
+.order-card,
+.panel-card,
+.delivery-address-box,
+.map-place-card,
+.national-recipient-admin{
+  overflow-wrap:anywhere;
+  word-break:normal;
+}
+
+/* Tablet general */
+@media (max-width: 1024px){
+  .section-shell{
+    width:min(100% - 32px,1160px)!important;
+  }
+
+  .site-header{
+    width:calc(100% - 24px)!important;
+    grid-template-columns:minmax(0,1fr) auto!important;
+  }
+
+  .desktop-nav{display:none!important}
+
+  .home-mega-card{
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  .home-mega-copy{
+    text-align:center;
+  }
+  .home-mega-actions{
+    justify-content:center;
+  }
+
+  .catalog-page-hero-inner-v9{
+    width:100%!important;
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+
+  .category-public-head{
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  .category-public-head p{
+    max-width:760px;
+  }
+
+  .product-grid{
+    grid-template-columns:minmax(0,1fr)!important;
+    width:100%;
+    max-width:720px!important;
+    margin-inline:auto;
+  }
+
+  .product-card,
+  .mega-card{
+    width:100%;
+    max-width:100%;
+  }
+
+  .admin-main{
+    width:100%;
+    max-width:none;
+  }
+}
+
+/* Celular / tablet vertical */
+@media (max-width: 760px){
+  body{
+    overflow-x:hidden;
+  }
+
+  .section-shell{
+    width:calc(100% - 24px)!important;
+    max-width:none!important;
+  }
+
+  .candy-rail{
+    width:24px!important;
+    opacity:.2!important;
+  }
+
+  /* Header público */
+  .site-header{
+    width:calc(100% - 16px)!important;
+    height:auto!important;
+    min-height:64px;
+    top:8px!important;
+    margin-top:8px!important;
+    padding:7px 8px 7px 10px!important;
+    border-radius:19px!important;
+    grid-template-columns:minmax(0,1fr) auto!important;
+    gap:8px;
+  }
+  .site-header .brand{
+    width:68px!important;
+    height:48px!important;
+  }
+  .site-header .brand img{
+    width:100%!important;
+    height:100%!important;
+    object-fit:contain!important;
+  }
+  .site-header .header-actions{
+    gap:6px!important;
+    max-width:100%;
+  }
+  .site-header .cart-button{
+    padding:7px!important;
+    gap:0!important;
+  }
+  .site-header .cart-button>span:first-child{
+    display:none!important;
+  }
+  .site-header .cart-count{
+    width:32px!important;
+    height:32px!important;
+    flex:0 0 32px;
+  }
+  .site-header .status-button{
+    min-height:40px;
+    max-width:105px;
+    padding:8px 10px!important;
+    font-size:9px!important;
+    line-height:1.15;
+    white-space:normal;
+  }
+
+  /* HOME */
+  .home-v10 .hero-v10{
+    width:calc(100% - 20px)!important;
+    padding-top:22px!important;
+    padding-bottom:52px!important;
+  }
+  .home-v10 .hero-showcase{
+    width:100%!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    padding:20px 14px 68px!important;
+    border-radius:28px!important;
+    overflow:hidden;
+  }
+  .home-v10 .hero-logo-stage{
+    width:min(100%,320px)!important;
+  }
+  .home-v10 .hero-order-side{
+    width:100%;
+    padding:10px 0!important;
+  }
+  .home-v10 .hero-order-side h1{
+    width:100%;
+    max-width:none!important;
+    font-size:clamp(38px,12vw,54px)!important;
+  }
+  .home-v10 .hero-order-side h1 span{
+    white-space:normal!important;
+  }
+  .home-v10 .hero-lead,
+  .home-v10 .hero-brand-note{
+    width:100%;
+    max-width:none;
+  }
+  .home-v10 .hero-spoon-options{
+    width:100%;
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  .home-v10 .hero-spoon-choice{
+    width:100%;
+    max-width:100%;
+  }
+  .home-v10 .hero-actions-v5{
+    width:100%;
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+
+  .home-mega-section{
+    width:calc(100% - 24px)!important;
+  }
+  .home-mega-card{
+    width:100%;
+    grid-template-columns:minmax(0,1fr)!important;
+    padding:11px!important;
+    border-radius:25px!important;
+    gap:10px!important;
+  }
+  .home-mega-media{
+    width:100%;
+    min-height:0!important;
+    aspect-ratio:1.25;
+    border-radius:19px!important;
+  }
+  .home-mega-media img{
+    width:100%!important;
+    height:100%!important;
+    object-fit:contain!important;
+  }
+  .home-mega-copy{
+    width:100%;
+    padding:14px 10px 20px!important;
+  }
+  .home-mega-copy h2{
+    font-size:40px!important;
+  }
+  .home-mega-actions{
+    display:grid;
+    grid-template-columns:minmax(0,1fr);
+    width:100%;
+    gap:8px;
+  }
+  .home-mega-actions .button{
+    width:100%!important;
+    white-space:normal;
+    text-align:center;
+  }
+
+  .steps-grid{
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  .step-card{
+    width:100%;
+  }
+
+  /* CATÁLOGO: fix principal del desbordamiento mostrado en móvil */
+  .catalog-page-hero-v9{
+    width:100%;
+    padding:20px 10px 14px!important;
+  }
+  .catalog-page-hero-inner-v9{
+    width:100%!important;
+    max-width:100%!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    padding:24px 16px!important;
+    border-radius:24px!important;
+    overflow:hidden;
+  }
+  .catalog-page-hero-inner-v9>div{
+    width:100%;
+  }
+  .catalog-page-hero-inner-v9 h1{
+    font-size:clamp(38px,12vw,50px)!important;
+    overflow-wrap:anywhere;
+  }
+  .catalog-page-hero-inner-v9 p{
+    width:100%;
+    max-width:none!important;
+    font-size:13px;
+  }
+  .catalog-page-hero-inner-v9 img{
+    width:min(190px,64%)!important;
+  }
+
+  .catalog-page-section-v9{
+    width:100%;
+    padding:54px 0 70px!important;
+    overflow:hidden;
+  }
+  .catalog-page-section-v9>.section-shell{
+    width:calc(100% - 20px)!important;
+    max-width:none!important;
+  }
+  .catalog-page-tools-v9{
+    width:100%;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:flex-start!important;
+    gap:14px!important;
+    padding-bottom:24px!important;
+  }
+  .catalog-page-tools-v9>span{
+    width:100%;
+    font-size:11px;
+    line-height:1.45;
+    white-space:normal;
+  }
+  .catalog-back-link-v9{
+    max-width:100%;
+    white-space:normal;
+  }
+  .catalog-sections,
+  .catalog-category{
+    width:100%;
+    max-width:100%;
+    min-width:0!important;
+  }
+  .catalog-sections{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    gap:48px!important;
+  }
+  .category-public-head{
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+    grid-template-columns:none!important;
+    gap:0!important;
+    margin-bottom:18px!important;
+    padding-bottom:16px!important;
+  }
+  .category-public-head>div,
+  .category-public-head>p{
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+  }
+  .category-public-head h3{
+    font-size:clamp(34px,11vw,46px)!important;
+    line-height:1.05;
+  }
+  .category-public-head p{
+    margin-top:9px!important;
+    font-size:12px!important;
+    line-height:1.6!important;
+  }
+
+  .product-grid{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    width:100%!important;
+    max-width:none!important;
+    margin:0!important;
+    gap:16px!important;
+  }
+  .product-card,
+  .spoon-card-v8,
+  .mega-card{
+    display:block!important;
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+    grid-column:auto!important;
+    border-radius:24px!important;
+    overflow:hidden!important;
+  }
+  .product-image,
+  .spoon-card-v8 .product-image,
+  .mega-card .product-image{
+    width:100%!important;
+    min-width:0!important;
+    min-height:0!important;
+    aspect-ratio:1.18!important;
+    padding:8px!important;
+    border-right:0!important;
+    border-bottom:1px solid rgba(218,88,137,.1)!important;
+  }
+  .product-image img,
+  .spoon-card-v8 .product-image img,
+  .mega-card .product-image img{
+    width:100%!important;
+    height:100%!important;
+    object-fit:cover!important;
+  }
+  .mega-card .product-image img{
+    object-fit:contain!important;
+  }
+  .product-card-body,
+  .spoon-card-v8 .product-card-body,
+  .mega-card .product-card-body{
+    width:100%!important;
+    padding:18px 16px 19px!important;
+  }
+  .product-topline,
+  .mega-card .product-topline{
+    width:100%;
+    min-width:0;
+    flex-wrap:wrap;
+    gap:8px!important;
+  }
+  .product-topline h3,
+  .mega-card .product-topline h3{
+    max-width:100%;
+    font-size:26px!important;
+  }
+  .product-price{
+    max-width:100%;
+  }
+
+  /* Producto, carrito y estado */
+  .modal-backdrop,
+  .checkout-backdrop,
+  .status-backdrop{
+    padding:0!important;
+    align-items:flex-end!important;
+  }
+  .product-modal,
+  .status-modal,
+  .checkout-modal{
+    width:100%!important;
+    max-width:100%!important;
+    min-width:0!important;
+  }
+  .product-modal{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    border-radius:24px 24px 0 0!important;
+    max-height:96dvh!important;
+    overflow:auto!important;
+  }
+  .modal-media{
+    width:100%;
+    min-height:0!important;
+    padding:12px!important;
+  }
+  .product-photo-shell{
+    width:100%;
+    min-height:245px!important;
+  }
+  .modal-content{
+    width:100%;
+    padding:24px 16px 22px!important;
+  }
+  .modal-content h2{
+    font-size:38px!important;
+  }
+  .variant-heading{
+    flex-direction:column!important;
+    align-items:flex-start!important;
+    gap:4px;
+  }
+  .variant-pills{
+    width:100%;
+  }
+  .variant-pill{
+    max-width:100%;
+    white-space:normal;
+  }
+
+  .cart-drawer{
+    width:100%!important;
+    max-width:100%!important;
+    padding:18px 14px!important;
+  }
+  .cart-item{
+    grid-template-columns:48px minmax(0,1fr) auto!important;
+  }
+  .cart-info{
+    min-width:0;
+  }
+  .cart-info strong,
+  .cart-info span{
+    overflow-wrap:anywhere;
+  }
+
+  .checkout-modal{
+    border-radius:24px 24px 0 0!important;
+    padding:16px 10px!important;
+    max-height:97dvh!important;
+    overflow:auto!important;
+  }
+  .checkout-head{
+    padding:14px 42px 16px 4px!important;
+  }
+  .checkout-head h2{
+    font-size:34px!important;
+  }
+  .checkout-card{
+    width:100%;
+    min-width:0!important;
+    padding:14px!important;
+    border-radius:18px!important;
+  }
+  .form-grid,
+  .form-grid.two,
+  .fulfillment-options,
+  .fulfillment-options-four,
+  .preparation-options,
+  .payment-method-options,
+  .payment-layout{
+    grid-template-columns:minmax(0,1fr)!important;
+    width:100%;
+  }
+  .checkout-card input,
+  .checkout-card textarea,
+  .checkout-card select,
+  .phone-prefix-field{
+    max-width:100%;
+  }
+  .phone-prefix-field{
+    grid-template-columns:auto minmax(0,1fr)!important;
+  }
+  .map-place-card{
+    align-items:flex-start!important;
+    width:100%;
+  }
+  .map-place-card>div{
+    min-width:0!important;
+  }
+  .pickup-whatsapp-actions{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  .pickup-whatsapp-actions a,
+  .cash-whatsapp-action{
+    width:100%;
+    max-width:100%;
+    text-align:center;
+    white-space:normal;
+  }
+  .payment-layout{
+    gap:14px!important;
+  }
+  .qr-shell-wrap,
+  .payment-info{
+    width:100%;
+  }
+  .qr-shell{
+    width:min(100%,280px)!important;
+    margin-inline:auto;
+  }
+  .receipt-preview{
+    grid-template-columns:64px minmax(0,1fr)!important;
+  }
+  .receipt-preview img{
+    width:64px!important;
+    height:64px!important;
+  }
+  .checkout-item,
+  .checkout-total-row,
+  .pay-total{
+    min-width:0;
+  }
+
+  .status-modal{
+    border-radius:24px 24px 0 0!important;
+    padding:26px 16px!important;
+  }
+
+  /* Footer */
+  .site-footer{
+    width:calc(100% - 24px)!important;
+    max-width:none!important;
+    display:flex!important;
+    flex-direction:column!important;
+    align-items:center!important;
+    text-align:center!important;
+    gap:18px!important;
+  }
+  .footer-brand-block{
+    width:100%;
+    min-width:0!important;
+    justify-content:center!important;
+    flex-direction:column!important;
+  }
+  .footer-socials{
+    width:100%;
+    margin-left:0!important;
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+  }
+  .footer-socials a{
+    width:100%;
+    min-width:0;
+    padding-inline:10px!important;
+  }
+  .footer-note{
+    width:100%;
+    text-align:center!important;
+  }
+
+  /* ADMIN */
+  .admin-sidebar{
+    position:static!important;
+    width:100%!important;
+    height:auto!important;
+    padding:12px!important;
+    overflow:hidden;
+  }
+  .admin-brand{
+    padding-bottom:12px!important;
+  }
+  .admin-brand img{
+    width:66px!important;
+    height:54px!important;
+  }
+  .admin-sidebar nav{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;
+    gap:7px!important;
+    width:100%;
+    margin-top:12px!important;
+  }
+  .admin-sidebar nav button,
+  .admin-sidebar nav a{
+    width:100%!important;
+    min-width:0!important;
+    padding:10px 9px!important;
+    font-size:11px!important;
+    white-space:normal;
+    overflow-wrap:anywhere;
+  }
+  .admin-main{
+    width:100%!important;
+    max-width:none!important;
+    margin-left:0!important;
+    padding:14px!important;
+  }
+  .admin-topbar{
+    width:100%;
+    flex-direction:column!important;
+    gap:14px!important;
+  }
+  .admin-topbar h1{
+    font-size:36px!important;
+    overflow-wrap:anywhere;
+  }
+  .top-actions{
+    width:100%;
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  .top-actions>*{
+    width:100%!important;
+    max-width:none!important;
+    min-width:0!important;
+    white-space:normal!important;
+    text-align:center;
+  }
+  .metrics-grid{
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  .dashboard-grid,
+  .settings-grid{
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  .panel-card,
+  .metric-card,
+  .order-card,
+  .category-editor,
+  .product-editor{
+    width:100%;
+    min-width:0!important;
+  }
+  .panel-head,
+  .order-head,
+  .catalog-admin-intro,
+  .category-products-head,
+  .variants-header,
+  .editor-footer{
+    flex-direction:column!important;
+    align-items:stretch!important;
+  }
+  .toolbar-card,
+  .orders-toolbar{
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+    width:100%;
+  }
+  .toolbar-card select,
+  .toolbar-card .search-wrap,
+  .orders-toolbar select,
+  .orders-toolbar .search-wrap{
+    width:100%!important;
+    min-width:0!important;
+    max-width:none!important;
+  }
+  .order-grid{
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  .order-code{
+    min-width:0;
+    flex-wrap:wrap;
+  }
+  .order-code strong{
+    overflow-wrap:anywhere;
+  }
+  .ranking-row{
+    grid-template-columns:32px minmax(0,1fr)!important;
+  }
+  .ranking-total,
+  .ranking-row .wa-btn{
+    grid-column:2;
+    justify-self:start;
+  }
+  .customer-panel-actions,
+  .customer-report-controls{
+    width:100%!important;
+    display:grid!important;
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  .customer-report-controls>*{
+    width:100%!important;
+  }
+  .customer-table-wrap{
+    width:100%;
+    max-width:100%;
+    overflow-x:auto!important;
+    -webkit-overflow-scrolling:touch;
+  }
+  .customer-table{
+    min-width:700px!important;
+  }
+  .category-editor-head{
+    grid-template-columns:34px minmax(0,1fr)!important;
+    padding:14px!important;
+  }
+  .category-editor-head>.switch-row,
+  .category-actions{
+    grid-column:2!important;
+  }
+  .category-actions{
+    flex-wrap:wrap!important;
+  }
+  .category-products{
+    padding:0 12px 14px!important;
+  }
+  .product-editor-head{
+    grid-template-columns:46px minmax(0,1fr) 34px!important;
+  }
+  .product-form-grid,
+  .variant-fields,
+  .settings-inline-grid{
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  .product-photo-row{
+    grid-template-columns:70px minmax(0,1fr)!important;
+  }
+  .product-photo-preview{
+    width:70px!important;
+    height:70px!important;
+  }
+  .variant-row{
+    grid-template-columns:30px 54px minmax(0,1fr) 34px!important;
+  }
+  .variant-fields{
+    grid-column:3/-1!important;
+  }
+
+  .login-card{
+    width:100%!important;
+    max-width:430px!important;
+    padding:22px 16px!important;
+  }
+  .login-card h1{
+    font-size:34px!important;
+  }
+}
+
+/* Teléfonos muy angostos: 320–390 px */
+@media (max-width: 390px){
+  .section-shell,
+  .catalog-page-section-v9>.section-shell,
+  .home-mega-section{
+    width:calc(100% - 16px)!important;
+  }
+
+  .site-header{
+    width:calc(100% - 10px)!important;
+    padding-inline:7px!important;
+  }
+  .site-header .brand{
+    width:60px!important;
+  }
+  .site-header .status-button{
+    max-width:92px;
+    font-size:8px!important;
+    padding-inline:8px!important;
+  }
+  .site-header .cart-count{
+    width:30px!important;
+    height:30px!important;
+    flex-basis:30px;
+  }
+
+  .home-v10 .hero-v10{
+    width:calc(100% - 12px)!important;
+  }
+  .home-v10 .hero-showcase{
+    padding-inline:10px!important;
+  }
+  .home-v10 .hero-order-side h1{
+    font-size:38px!important;
+  }
+  .hero-referential-note{
+    font-size:9px!important;
+  }
+
+  .catalog-page-hero-v9{
+    padding-inline:6px!important;
+  }
+  .catalog-page-hero-inner-v9{
+    padding:20px 12px!important;
+  }
+  .catalog-page-hero-inner-v9 h1{
+    font-size:38px!important;
+  }
+  .category-public-head h3{
+    font-size:36px!important;
+  }
+  .product-card-body,
+  .spoon-card-v8 .product-card-body,
+  .mega-card .product-card-body{
+    padding-inline:13px!important;
+  }
+  .product-topline h3,
+  .mega-card .product-topline h3{
+    font-size:24px!important;
+  }
+
+  .footer-socials{
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+
+  .admin-main{
+    padding:10px!important;
+  }
+  .admin-sidebar nav{
+    grid-template-columns:minmax(0,1fr)!important;
+  }
+  .admin-topbar h1{
+    font-size:32px!important;
+  }
+  .order-card,
+  .panel-card,
+  .metric-card{
+    padding:13px!important;
+  }
+}
+
+
+
+  /* V31 · carrito multi-producto + entrega tipo acordeón */
+  .cart-footer-actions{display:grid;grid-template-columns:1fr 1.15fr;gap:10px}
+  .cart-secondary-button{border:1px solid rgba(201,95,120,.28);background:#fff7f8;color:var(--coral-deep);font-weight:900}
+  .cart-secondary-button:hover{background:#ffeef2}
+  .cart-item{align-items:start!important}
+  .cart-info{display:grid;gap:7px}
+  .cart-item-title{font-size:13px!important;color:var(--brown-deep);font-weight:900}
+  .cart-item-meta{font-size:10px!important;color:var(--muted)}
+  .cart-qty-controls{display:inline-grid;grid-template-columns:34px 38px 34px;align-items:center;width:max-content;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:#fff}
+  .cart-qty-controls button{width:34px;height:32px;display:grid;place-items:center;background:#fff7f8!important;color:var(--coral-deep)!important;font-size:18px!important;font-weight:900}
+  .cart-qty-controls span{display:grid;place-items:center;font-size:12px;font-weight:900;color:var(--brown-deep)}
+  .cart-item-side{display:flex;flex-direction:column;align-items:flex-end;gap:9px;min-width:76px}
+  .cart-item-side strong{font-size:12px;color:var(--brown-deep);white-space:nowrap}
+  .cart-remove-button{font-size:10px!important;font-weight:900!important;color:#a65b6c!important;background:#fff1f3!important;border-radius:999px!important;padding:7px 10px!important}
+
+  .fulfillment-accordion{display:grid;gap:11px}
+  .fulfillment-choice{border-radius:19px;min-width:0}
+  .fulfillment-choice>.fulfillment-card{width:100%;min-height:68px;margin:0}
+  .fulfillment-choice>.conditional-panel{margin:8px 0 0;border:1px solid rgba(201,95,120,.14);box-shadow:0 10px 30px rgba(93,50,46,.045);animation:v31PanelIn .18s ease}
+  @keyframes v31PanelIn{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:none}}
+  .fulfillment-choice:has(input[name="fulfillment"]:checked)>.fulfillment-card{border-color:rgba(201,95,120,.48);box-shadow:0 8px 24px rgba(201,95,120,.08)}
+
+  .live-community-panel{margin-top:12px;padding:15px;border:1px solid rgba(62,171,97,.18);background:linear-gradient(135deg,#f5fff8,#fff9fb);border-radius:18px;display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center}
+  .live-community-panel.hidden{display:none!important}
+  .live-community-icon{font-size:24px;white-space:nowrap}
+  .live-community-copy{min-width:0}
+  .live-community-copy strong,.live-community-copy span{display:block}
+  .live-community-copy strong{color:var(--brown-deep);font-size:13px}
+  .live-community-copy span{color:var(--muted);font-size:10px;line-height:1.5;margin-top:3px}
+  .live-community-button{display:inline-flex;align-items:center;justify-content:center;text-align:center;background:#25d366;color:white;text-decoration:none;border-radius:999px;padding:11px 15px;font-size:10px;font-weight:900;line-height:1.25}
+
+  @media(max-width:640px){
+    .cart-footer-actions{grid-template-columns:1fr}
+    .cart-item{grid-template-columns:44px minmax(0,1fr)!important;position:relative;padding-right:0!important}
+    .cart-thumb{width:44px!important;height:44px!important}
+    .cart-item-side{grid-column:2;flex-direction:row;align-items:center;justify-content:space-between;width:100%;min-width:0}
+    .cart-qty-controls{grid-template-columns:32px 36px 32px}
+    .live-community-panel{grid-template-columns:1fr;text-align:center}
+    .live-community-button{width:100%;white-space:normal}
+    .fulfillment-choice>.conditional-panel{padding:13px!important}
+  }
+
+  </style>
+
+  <style id="v32-cart-stepper-fix">
+    /* V32 · controles de cantidad visibles al lado de cada producto */
+    .cart-item-v32{
+      display:grid!important;
+      grid-template-columns:52px minmax(0,1fr) auto!important;
+      gap:12px!important;
+      align-items:center!important;
+    }
+    .cart-info-v32{min-width:0!important;display:grid!important;gap:4px!important}
+    .cart-item-controls-v32{
+      display:grid!important;
+      grid-template-columns:auto!important;
+      justify-items:end!important;
+      align-items:center!important;
+      gap:6px!important;
+    }
+    .cart-qty-controls-v32{
+      display:grid!important;
+      grid-template-columns:36px 38px 36px!important;
+      align-items:center!important;
+      width:max-content!important;
+      overflow:hidden!important;
+      border:1px solid rgba(201,95,120,.30)!important;
+      border-radius:999px!important;
+      background:#fff!important;
+      box-shadow:0 5px 14px rgba(151,64,88,.08)!important;
+    }
+    .cart-qty-controls-v32 button{
+      width:36px!important;height:34px!important;padding:0!important;
+      display:grid!important;place-items:center!important;
+      border:0!important;background:#fff1f5!important;color:#bd3d68!important;
+      font-size:21px!important;font-weight:900!important;line-height:1!important;
+    }
+    .cart-qty-controls-v32 button:hover{background:#ffdfe9!important}
+    .cart-qty-value-v32{
+      display:grid!important;place-items:center!important;
+      margin:0!important;color:#5b3027!important;font-weight:900!important;font-size:13px!important;
+    }
+    .cart-line-total-v32{font-size:12px!important;color:#5b3027!important;white-space:nowrap!important}
+    .cart-remove-v32{font-size:9px!important;padding:4px 7px!important}
+    .cart-footer-actions{display:grid!important;grid-template-columns:1fr 1.15fr!important;gap:10px!important}
+    #continueShoppingBtn{display:flex!important;align-items:center!important;justify-content:center!important;min-height:48px!important}
+    #startCheckoutBtn{display:flex!important;align-items:center!important;justify-content:center!important;min-height:48px!important}
+    @media (max-width:640px){
+      .cart-drawer{padding:18px 14px!important}
+      .cart-item-v32{grid-template-columns:44px minmax(0,1fr)!important;align-items:start!important}
+      .cart-thumb{width:44px!important;height:44px!important}
+      .cart-item-controls-v32{
+        grid-column:1 / -1!important;
+        grid-template-columns:auto 1fr auto!important;
+        justify-items:start!important;
+        width:100%!important;
+        padding-left:56px!important;
+        gap:9px!important;
+      }
+      .cart-line-total-v32{justify-self:center!important;align-self:center!important}
+      .cart-remove-v32{justify-self:end!important}
+      .cart-footer-actions{grid-template-columns:1fr!important}
+      #continueShoppingBtn{order:1!important}
+      #startCheckoutBtn{order:2!important}
+    }
+    @media (max-width:360px){
+      .cart-item-controls-v32{padding-left:0!important;grid-template-columns:auto 1fr!important}
+      .cart-remove-v32{grid-column:1 / -1!important;justify-self:end!important}
+    }
+  </style>
+
+<style id="v33-provincial-fee-styles">
+.provincial-fee-warning{display:block;margin-top:8px;padding:10px 12px;border-radius:14px;background:#fff4f7;color:#7b5260;line-height:1.45}.provincial-fee-warning strong{color:#d94d7e}.provincial-fee-row{margin-top:8px;padding-top:10px;border-top:1px dashed rgba(217,77,126,.28)}.provincial-fee-summary{background:#fff5f8;border:1px solid rgba(217,77,126,.18);border-radius:14px;padding:12px 14px;margin-top:10px}.provincial-fee-summary span{display:flex;flex-direction:column;gap:3px}.provincial-fee-summary small{font-size:11px;line-height:1.35;color:#9b707d;font-weight:500}.provincial-fee-summary strong,.provincial-fee-row strong{color:#d94d7e}@media(max-width:560px){.provincial-fee-summary{align-items:flex-start;gap:10px}.provincial-fee-summary strong{white-space:nowrap}}
+</style>
+</head>
+<body class="catalog-v9">
+  <div class="candy-rail candy-rail-left" aria-hidden="true"></div>
+  <div class="candy-rail candy-rail-right" aria-hidden="true"></div>
+
+  <header class="site-header v9-header">
+    <a class="brand" href="index.html" aria-label="Sweet by Sami, inicio">
+      <img src="assets/logo.png" alt="Sweet by Sami" />
+    </a>
+    <nav class="desktop-nav" aria-label="Navegación principal">
+      <a href="index.html">Inicio</a>
+      <a href="catalogo.html" class="active-link">Catálogo</a>
+      <a href="index.html#como-funciona">Cómo funciona</a>
+    </nav>
+    <div class="header-actions">
+      <button class="status-button hidden" id="openStatusBtn" type="button">Estado del pedido</button>
+      <button class="cart-button" id="openCartBtn" type="button">
+        <span>Mi pedido</span>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="catalog-page-hero-v9">
+      <div class="catalog-page-hero-inner-v9">
+        <div>
+          <span class="eyebrow">Sweet by Sami</span>
+          <h1>Nuestro catálogo</h1>
+          <p>Elige una categoría, abre el producto que quieras y selecciona su presentación.</p>
+        </div>
+        <img src="assets/logo.png" alt="Sweet by Sami" />
+      </div>
+    </section>
+
+    <section class="spoons-section catalog-page-section-v9" id="catalogo">
+      <div class="section-shell">
+        <div class="catalog-page-tools-v9">
+          <a href="index.html" class="catalog-back-link-v9">← Volver al inicio</a>
+          <span>Todos los productos disponibles</span>
+        </div>
+        <div class="catalog-sections" id="productGrid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-brand-block"><img src="assets/logo.png" alt="Sweet by Sami" /><p>Una dulce sorpresa en cada Scoop.</p></div>
+    <div class="footer-socials" aria-label="Redes sociales de Sweet by Sami">
+      <a href="https://www.instagram.com/sweet_by_sami/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://www.tiktok.com/@sweet_by.sami?is_from_webapp=1&amp;sender_device=pc" target="_blank" rel="noopener noreferrer">TikTok</a>
+    </div>
+    <p class="footer-note">Sweet by Sami · Bolivia</p>
+  </footer>
+
+  <!-- Producto / variantes -->
+  <div class="modal-backdrop" id="productModal" aria-hidden="true">
+    <div class="product-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="closeModalBtn" type="button" aria-label="Cerrar">×</button>
+      <div class="modal-media">
+        <div class="product-photo-shell">
+          <img id="modalImage" src="" alt="" />
+          <div class="photo-placeholder" id="modalPlaceholder"><span>FOTO REAL</span><small>Puedes cambiarla desde administración</small></div>
+        </div>
+        <div class="reference-badge">Imagen referencial</div>
+      </div>
+      <div class="modal-content">
+        <span class="eyebrow" id="modalEyebrow">Tu elección</span>
+        <h2 id="modalTitle">Scoop</h2>
+        <p class="modal-subtitle" id="modalSubtitle"></p>
+        <div class="modal-price" id="modalPrice"></div>
+        <div class="variant-block">
+          <div class="variant-heading"><span>Elige tu presentación</span><small id="variantHelp"></small></div>
+          <div class="variant-pills" id="variantPills"></div>
+        </div>
+        <div class="selected-variant-box"><strong id="selectedVariantName"></strong><span id="selectedVariantDescription"></span></div>
+        <p class="reference-copy" id="modalReferenceCopy">Las fotografías son referenciales. Revisa la presentación seleccionada antes de agregarla al pedido.</p>
+        <button class="button button-primary button-full" id="addToCartBtn" type="button">Agregar al pedido</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Carrito -->
+  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+    <div class="cart-header">
+      <div><span class="eyebrow">Sweet by Sami</span><h2>Tu pedido</h2></div>
+      <button class="drawer-close" id="closeCartBtn" type="button">×</button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-empty" id="cartEmpty"><span>♡</span><p>Aún no elegiste ningún producto.</p></div>
+    <div class="cart-footer">
+      <div class="cart-total-row"><span>Subtotal</span><strong id="cartTotal">Bs. 0</strong></div>
+      <div class="cart-footer-actions">
+        <button class="button cart-secondary-button" id="continueShoppingBtn" type="button">Seguir comprando</button>
+        <button class="button button-primary" id="startCheckoutBtn" type="button">Realizar pedido ahora</button>
+      </div>
+      <small>Puedes mezclar Scoops, Mega Caja y distintas presentaciones en un solo pedido.</small>
+    </div>
+  </aside>
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+
+  <!-- Checkout -->
+  <div class="checkout-backdrop" id="checkoutModal" aria-hidden="true">
+    <div class="checkout-modal" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle">
+      <button class="modal-close checkout-close" id="closeCheckoutBtn" type="button" aria-label="Cerrar">×</button>
+      <div class="checkout-head">
+        <span class="eyebrow">Finaliza tu pedido</span>
+        <h2 id="checkoutTitle">Checkout Sweet</h2>
+        <p>Registra tus datos, elige cómo recibir tu pedido, cómo quieres el armado y tu forma de pago.</p>
+      </div>
+
+      <form id="checkoutForm" class="checkout-form">
+        <section class="checkout-card">
+          <div class="checkout-section-title"><span>01</span><div><strong>Tus datos</strong><small>Los usamos para identificar tu pedido y contactarte.</small></div></div>
+          <div class="form-grid two">
+            <label>Nombre completo<input id="customerName" name="customerName" autocomplete="name" required placeholder="Ej. Daniela Rojas"></label>
+            <label>Número de WhatsApp
+              <div class="phone-prefix-field"><span>+591</span><input id="customerPhone" name="customerPhone" inputmode="numeric" autocomplete="tel-national" maxlength="8" pattern="[0-9]{8}" required placeholder="64329209"></div>
+              <small class="field-helper">Escribe solamente los 8 dígitos de tu celular.</small>
+            </label>
+          </div>
+        </section>
+
+        <section class="checkout-card fulfillment-section-card">
+          <div class="checkout-section-title"><span>02</span><div><strong>¿Cómo quieres recibirlo?</strong><small>Elige una opción. Solo se mostrarán los datos correspondientes a esa entrega.</small></div></div>
+
+          <div class="fulfillment-accordion">
+            <div class="fulfillment-choice" data-fulfillment-choice="pickup">
+              <label class="fulfillment-card"><input type="radio" name="fulfillment" value="pickup" checked><span class="fulfillment-dot"></span><div><strong>Recojo en local</strong><small>Recoge directamente en Sweet by Sami.</small></div></label>
+              <div class="conditional-panel" id="pickupFields">
+                <span class="field-caption">Punto de recojo · Sweet by Sami</span>
+                <strong id="pickupAddressText">Sweet by Sami · Cochabamba</strong>
+                <a class="map-place-card" id="pickupMapLink" href="https://maps.app.goo.gl/FsLshw8DKRAXytGF9" target="_blank" rel="noopener noreferrer"><span class="map-place-icon">⌖</span><div><strong>Ver ubicación en Google Maps</strong><small>Abre el punto exacto de recojo.</small></div><b>↗</b></a>
+                <div class="schedule-chips" id="pickupHoursDisplay"><span>7:30 a 9:00 am</span><span>2:00 a 3:00 pm</span></div>
+                <div class="schedule-coordinate-box">
+                  <strong>¿Necesitas recoger fuera de esos horarios?</strong>
+                  <small>Coordina otra hora directamente por WhatsApp.</small>
+                  <div class="pickup-whatsapp-actions">
+                    <a id="pickupCoord1" href="https://wa.me/59172947659?text=Hola%20Sweet%20by%20Sami%2C%20quisiera%20coordinar%20otro%20horario%20para%20recoger%20mi%20pedido." target="_blank" rel="noopener noreferrer">WhatsApp 72947659</a>
+                    <a id="pickupCoord2" href="https://wa.me/59164329209?text=Hola%20Sweet%20by%20Sami%2C%20quisiera%20coordinar%20otro%20horario%20para%20recoger%20mi%20pedido." target="_blank" rel="noopener noreferrer">WhatsApp 64329209</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="fulfillment-choice" data-fulfillment-choice="customer_delivery">
+              <label class="fulfillment-card"><input type="radio" name="fulfillment" value="customer_delivery"><span class="fulfillment-dot"></span><div><strong>Manda tu delivery</strong><small>Envía tu delivery de confianza. Aquí tienes el punto exacto de Sweet by Sami.</small></div></label>
+              <div class="conditional-panel hidden" id="deliveryFields">
+                <span class="field-caption">Punto de recojo para tu delivery</span>
+                <strong>Tu delivery recoge el pedido en Sweet by Sami.</strong>
+                <div class="delivery-address-box"><small>Dirección / punto de recojo</small><strong id="deliveryPickupAddressText">Sweet by Sami · Cochabamba</strong><span>Comparte esta ubicación con tu delivery para que llegue al punto exacto.</span></div>
+                <a class="map-place-card" id="deliveryPickupMapLink" href="https://maps.app.goo.gl/FsLshw8DKRAXytGF9" target="_blank" rel="noopener noreferrer"><span class="map-place-icon">⌖</span><div><strong>Ubicación de Sweet by Sami</strong><small>Ábrela y envíala a tu delivery.</small></div><b>↗</b></a>
+                <label class="inline-checkout-label">Nombre o referencia de tu delivery (opcional)<input id="deliveryReference" placeholder="Ej. Juan / moto roja / empresa de delivery"></label>
+                <div class="schedule-chips" id="deliveryPickupHoursDisplay"><span>7:30 a 9:00 am</span><span>2:00 a 3:00 pm</span></div>
+                <p class="panel-explanation">El recojo del delivery está sujeto a coordinación de horario con Sweet by Sami.</p>
+                <div class="pickup-whatsapp-actions">
+                  <a id="deliveryCoord1" href="https://wa.me/59172947659?text=Hola%20Sweet%20by%20Sami%2C%20quiero%20coordinar%20el%20horario%20para%20que%20mi%20delivery%20recoja%20el%20pedido." target="_blank" rel="noopener noreferrer">Coordinar 72947659</a>
+                  <a id="deliveryCoord2" href="https://wa.me/59164329209?text=Hola%20Sweet%20by%20Sami%2C%20quiero%20coordinar%20el%20horario%20para%20que%20mi%20delivery%20recoja%20el%20pedido." target="_blank" rel="noopener noreferrer">Coordinar 64329209</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="fulfillment-choice" data-fulfillment-choice="national">
+              <label class="fulfillment-card"><input type="radio" name="fulfillment" value="national"><span class="fulfillment-dot"></span><div><strong>Envíos nacionales</strong><small>Despachos únicamente los sábados.</small></div></label>
+              <div class="conditional-panel hidden" id="nationalFields">
+                <div class="attention-callout"><span>✦</span><strong>HAZ TU PEDIDO CON TIEMPO</strong><span>✦</span></div>
+                <p class="panel-explanation"><strong>Los envíos nacionales salen únicamente los días sábado.</strong> Realiza tu pedido con anticipación para que podamos prepararlo a tiempo.</p>
+                <span class="field-caption">Datos para el envío nacional</span>
+                <p class="panel-explanation">Completa los datos de la persona que recibirá o recogerá el pedido.</p>
+                <div class="form-grid two">
+                  <label class="wide">Nombre completo del destinatario<input id="shippingRecipientName" autocomplete="name" placeholder="Ej. María Pérez Vargas" required></label>
+                  <label>Número de celular
+                    <div class="phone-input-wrap"><span>+591</span><input id="shippingRecipientPhone" type="tel" inputmode="numeric" autocomplete="tel-national" maxlength="8" placeholder="64329209" required></div>
+                  </label>
+                  <label>Número de carnet (CI)<input id="shippingRecipientCi" inputmode="text" autocomplete="off" maxlength="20" placeholder="Ej. 12345678" required></label>
+                  <label>Departamento
+                    <select id="shippingDepartment" required>
+                      <option value="">Selecciona tu departamento</option>
+                      <option>Beni</option><option>Chuquisaca</option><option>Cochabamba</option><option>La Paz</option><option>Oruro</option><option>Potosí</option><option>Santa Cruz</option><option>Tarija</option>
+                    </select>
+                  </label>
+                  <label id="shippingProvinceWrap" class="hidden">Destino habilitado en Cochabamba
+                    <select id="shippingProvince">
+                      <option value="">Selecciona tu destino</option>
+                      <option>Ivirgarzama</option>
+                      <option>Eterazama</option>
+                      <option>Mariposas</option>
+                    </select>
+                    <small class="field-helper">Esta opción se habilita únicamente al seleccionar Cochabamba.</small><small class="field-helper provincial-fee-warning"><strong>Se suman Bs. 20 al total como adelanto del envío provincial.</strong> Este monto debe pagarse junto con el pedido. Si el envío cuesta menos, se te reembolsará la diferencia.</small>
+                  </label>
+                  <div id="shippingProvinceNotice" class="wide field-helper national-province-rule">Fuera de Cochabamba no realizamos envíos a provincias. Para los demás departamentos no se habilita ningún destino provincial.</div>
+                  <label class="wide">Dirección / agencia de destino<input id="shippingAddress" placeholder="Agencia, dirección o referencia de destino" required></label>
+                </div>
+                <small class="national-note">Actualmente no realizamos envíos al departamento de Pando.</small>
+              </div>
+            </div>
+
+            <div class="fulfillment-choice" data-fulfillment-choice="danae">
+              <label class="fulfillment-card"><input type="radio" name="fulfillment" value="danae"><span class="fulfillment-dot"></span><div><strong>Recojo en Paquetería DANAE</strong><small>Dejamos los pedidos los jueves.</small></div></label>
+              <div class="conditional-panel hidden" id="danaeFields">
+                <span class="field-caption">Recojo en Paquetería DANAE</span>
+                <strong id="danaeLocationText">Paquetería DANAE · 1er piso · local 20</strong>
+                <p class="panel-explanation">Sweet by Sami deja los pedidos en DANAE los días <b>jueves</b>. Una vez dejado tu pedido, puedes recogerlo dentro del horario de atención del local.</p>
+                <div class="schedule-chips" id="danaeHoursDisplay"><span>Lunes a viernes</span><span>8:00 am a 8:30 pm</span></div>
+                <a class="map-place-card" id="danaeMapLink" href="https://maps.app.goo.gl/YHXgj9gWhiJ3pkgH7?g_st=awb" target="_blank" rel="noopener noreferrer"><span class="map-place-icon">⌖</span><div><strong>Ver Paquetería DANAE en Google Maps</strong><small>1er piso · local 20</small></div><b>↗</b></a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="checkout-card">
+          <div class="checkout-section-title"><span>03</span><div><strong>¿Cómo quieres que armemos tu caja?</strong><small>Elige LIVE o video para TikTok.</small></div></div>
+          <div class="preparation-options">
+            <label class="preparation-card"><input type="radio" name="preparationMode" value="live" checked><span class="fulfillment-dot"></span><div><strong>Armado en LIVE</strong><small>Tu caja se arma durante un LIVE de Sweet by Sami. Únete al grupo para consultar los horarios disponibles.</small></div></label>
+            <label class="preparation-card"><input type="radio" name="preparationMode" value="tiktok"><span class="fulfillment-dot"></span><div><strong>Video para TikTok</strong><small>Tu video será publicado en nuestro TikTok al día siguiente de confirmado tu pedido.</small></div></label>
+          </div>
+          <div class="live-community-panel" id="liveCommunityPanel">
+            <div class="live-community-icon">✨🍭</div>
+            <div class="live-community-copy"><strong>¡Únete a la comunidad de Sweet by Sami!</strong><span>Entra al grupo de WhatsApp para ver los horarios de los LIVE y saber cuándo se armará tu caja.</span></div>
+            <a class="live-community-button" href="https://chat.whatsapp.com/BK5fu8PWBspKqRcHoozIxS?s=sw&p=a&ilr=0" target="_blank" rel="noopener noreferrer">Unirme al grupo y ver horarios del LIVE</a>
+          </div>
+          <div class="attention-callout preparation-attention"><span>♡</span><strong>HAZ TU PEDIDO CON TIEMPO</strong><span>♡</span></div>
+        </section>
+
+        <section class="checkout-card payment-card">
+          <div class="checkout-section-title"><span>04</span><div><strong>Forma de pago</strong><small>QR para todos los pedidos. Efectivo solo para tu primer pedido.</small></div></div>
+          <div class="payment-method-options">
+            <label class="payment-method-card"><input type="radio" name="paymentMethod" value="qr" checked><span class="fulfillment-dot"></span><div><strong>Pago por QR</strong><small>Paga ahora y adjunta tu comprobante.</small></div></label>
+            <label class="payment-method-card cash-option" id="cashPaymentCard"><input type="radio" name="paymentMethod" value="cash" id="cashPaymentRadio" disabled><span class="fulfillment-dot"></span><div><strong>Pago en efectivo</strong><small id="cashEligibilityText">Escribe tu número para verificar si está disponible.</small><a class="cash-eligibility-whatsapp hidden" id="cashEligibilityWhatsapp" href="https://wa.me/59164329209" target="_blank" rel="noopener noreferrer">Quiero pagar mi pedido en efectivo</a></div></label>
+          </div>
+
+          <div class="payment-layout" id="qrPaymentPanel">
+            <div class="qr-shell-wrap">
+              <div class="qr-shell">
+                <img id="paymentQrImage" alt="QR de pago Sweet by Sami">
+                <div id="qrPlaceholder" class="qr-placeholder"><span>QR</span><small>Aún no se cargó el QR de pago.</small></div>
+              </div>
+              <button class="qr-download-btn" id="downloadQrBtn" type="button">Descargar QR de pago</button>
+            </div>
+            <div class="payment-info">
+              <div class="pay-total"><span>Total de productos</span><strong id="checkoutTotal">Bs. 0</strong></div><div class="pay-total provincial-fee-row hidden" id="provincialShippingPaymentRow"><span>Adelanto envío provincial</span><strong>Bs. 20</strong></div>
+              <p id="paymentInstructions">Escanea el QR, realiza el pago y luego adjunta una captura del comprobante.</p>
+              <label class="receipt-drop" id="receiptDrop">
+                <input type="file" id="paymentReceipt" accept="image/*" required>
+                <span class="receipt-icon">＋</span>
+                <strong>Subir comprobante</strong>
+                <small>JPG, PNG o captura de pantalla</small>
+              </label>
+              <div class="receipt-preview hidden" id="receiptPreview"><img id="receiptPreviewImg" alt="Vista previa del comprobante"><button type="button" id="changeReceiptBtn">Cambiar comprobante</button></div>
+            </div>
+          </div>
+          <div class="cash-payment-panel hidden" id="cashPaymentPanel">
+            <div class="cash-icon">Bs.</div>
+            <div class="cash-payment-copy"><strong>Pago en efectivo disponible únicamente para el primer pedido.</strong><p>Si es tu primera compra, registra el pedido y luego coordina el pago directamente con Sweet by Sami por WhatsApp. Tu mensaje incluirá automáticamente todo lo que tienes en el carrito.</p><a class="cash-whatsapp-action" id="cashWhatsappBtn" href="https://wa.me/59164329209" target="_blank" rel="noopener noreferrer">Quiero pagar mi pedido en efectivo</a></div>
+          </div>
+        </section>
+
+        <section class="checkout-card summary-card">
+          <div class="checkout-section-title"><span>05</span><div><strong>Resumen</strong><small>Revisa tu pedido antes de enviarlo.</small></div></div>
+          <div id="checkoutItems" class="checkout-items"></div>
+          <div class="checkout-item provincial-fee-summary hidden" id="provincialShippingSummaryRow"><span>Adelanto de envío provincial <small>Si el costo real es menor a Bs. 20, se reembolsa la diferencia.</small></span><strong>Bs. 20</strong></div>
+          <div class="checkout-total-row"><span>Total a pagar</span><strong id="checkoutGrandTotal">Bs. 0</strong></div>
+          <p class="shipping-note">Para Ivirgarzama, Eterazama o Mariposas se cobra Bs. 20 por adelantado junto con el pedido. Si el envío cuesta menos, Sweet by Sami reembolsa la diferencia. Los demás costos de entrega se coordinan por separado cuando corresponda.</p>
+        </section>
+
+        <button class="button button-primary button-full checkout-submit" id="submitOrderBtn" type="submit">Enviar pedido</button>
+        <p class="form-error hidden" id="checkoutError"></p>
+      </form>
+
+      <div class="order-success hidden" id="orderSuccess">
+        <div class="success-mark">✓</div>
+        <span class="eyebrow">Pedido registrado</span>
+        <h2 id="successTitle">¡Pedido registrado!</h2>
+        <p id="successOrderText">Tu pedido es <strong id="successOrderCode"></strong><span id="successOrderNumber"></span>. Sweet by Sami continuará con la revisión.</p>
+        <div class="payment-confirmation-message pending" id="paymentConfirmationMessage" aria-live="polite">
+          <span class="payment-confirmation-icon" aria-hidden="true">⌛</span>
+          <div>
+            <strong id="paymentConfirmationTitle">Espera a la confirmación del pago, por favor.</strong>
+            <span id="paymentConfirmationText">Tu comprobante fue enviado correctamente. Te avisaremos aquí en cuanto el pago sea confirmado.</span>
+          </div>
+        </div>
+        <div class="status-live-card" id="liveStatusCard">
+          <div class="status-pulse"></div>
+          <div><small>Estado del pago</small><strong id="livePaymentStatus">Comprobante pendiente de revisión</strong><span id="liveOrderStatus">Pedido recibido</span></div>
+        </div>
+        <div class="success-actions">
+          <button class="button button-primary" id="successWhatsAppBtn" type="button">Contactar por WhatsApp</button>
+          <button class="button button-ghost" id="closeSuccessBtn" type="button">Seguir viendo la tienda</button>
+        </div>
+        <small class="live-note">Mientras esta página esté abierta, el estado se actualizará automáticamente cuando revisen tu pago.</small>
+      </div>
+    </div>
+  </div>
+
+  <!-- Estado de pedido guardado -->
+  <div class="status-backdrop" id="statusModal" aria-hidden="true">
+    <div class="status-modal">
+      <button class="modal-close" id="closeStatusBtn" type="button">×</button>
+      <span class="eyebrow">Tu último pedido</span>
+      <h2 id="statusOrderCode">Pedido</h2>
+      <div class="status-live-card standalone">
+        <div class="status-pulse"></div>
+        <div><small>Estado del pago</small><strong id="savedPaymentStatus"></strong><span id="savedOrderStatus"></span></div>
+      </div>
+      <p id="savedStatusMessage" class="saved-status-message"></p>
+      <button class="button button-primary button-full" id="statusWhatsAppBtn" type="button">Hablar con Sweet by Sami</button>
+    </div>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

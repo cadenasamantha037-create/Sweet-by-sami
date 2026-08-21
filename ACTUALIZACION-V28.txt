@@ -1,0 +1,11 @@
+Sweet by Sami · V28 · Actualización automática del panel administrador
+
+NO requiere ejecutar SQL adicional.
+
+Cambios:
+- Los pedidos nuevos aparecen automáticamente en Resumen y Pedidos.
+- Supabase Realtime actualiza el panel al instante cuando está disponible.
+- Respaldo automático consulta pedidos cada 3 segundos si Realtime falla.
+- Al volver a la pestaña del administrador, se sincroniza inmediatamente.
+- El nuevo pedido conserva la alerta visual y el sonido de campanita.
+- No hace falta presionar Actualizar ni usar F5.

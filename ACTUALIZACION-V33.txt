@@ -1,0 +1,9 @@
+Sweet by Sami · V33
+
+- Los envíos nacionales a Ivirgarzama, Eterazama o Mariposas suman Bs. 20 automáticamente al total a pagar.
+- El checkout muestra el adelanto por separado y el total final con el recargo incluido.
+- Se aclara que, si el envío real cuesta menos de Bs. 20, Sweet by Sami reembolsa la diferencia.
+- Supabase calcula el recargo del lado del servidor; no depende del valor enviado por el navegador.
+- El panel admin muestra el adelanto provincial dentro del pedido.
+
+Ejecuta SQL-ACTUALIZACION-V33.sql sobre la base actual y luego publica esta versión en Netlify.

@@ -1,0 +1,7 @@
+Sweet by Sami · V30
+
+- Corrige el error MIME de Netlify con css/v29-responsive.css.
+- El responsive final ahora va embebido directamente en index.html, catalogo.html y admin-sami.html.
+- Se conserva también css/v29-responsive.css como copia editable.
+- No requiere SQL.
+- Mantiene el botón “Mira cómo se prepara” de Mega Caja y todas las funciones V29.
