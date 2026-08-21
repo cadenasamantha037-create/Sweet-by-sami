@@ -54,7 +54,3 @@ Consulta `DEPLOYMENT.md` para el paso final GitHub + Netlify.
 
 ## Regla de provincias V27
 En envíos nacionales, la opción de destino provincial solo se habilita al seleccionar Cochabamba y permite únicamente Ivirgarzama, Eterazama o Mariposas. Los demás departamentos no admiten envíos a provincias.
-
-
-## V33 · envío provincial Cochabamba
-Los pedidos nacionales con destino Ivirgarzama, Eterazama o Mariposas incluyen un adelanto obligatorio de Bs. 20 en el total. Si el costo real del envío es menor, la diferencia se reembolsa al cliente.

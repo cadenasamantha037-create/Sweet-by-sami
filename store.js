@@ -346,9 +346,7 @@
     if (!client) {
       if (paymentMethod === "cash" && !(await checkCashEligibility(cleanPhone))) throw new Error("El pago en efectivo solo está disponible para el primer pedido.");
       const receipt = receiptFile ? await imageToDataUrl(receiptFile, 1500, .74) : "";
-      const productsTotal = payload.items.reduce((sum, item) => sum + Number(item.unit_price) * Number(item.quantity || 1), 0);
-      const shippingFee = payload.fulfillment_method === "national" && payload.department === "Cochabamba" && ["Ivirgarzama","Eterazama","Mariposas"].includes(payload.shipping_province) ? 20 : 0;
-      const total = productsTotal + shippingFee;
+      const total = payload.items.reduce((sum, item) => sum + Number(item.unit_price) * Number(item.quantity || 1), 0);
       const customer = upsertLocalCustomer(payload.customer_name, cleanPhone);
       const now = new Date().toISOString();
       const orders = getLocalOrders();
@@ -358,7 +356,7 @@
       const order = {
         id: uuid(), order_code: code, tracking_token: trackingToken, order_serial: orderSerial, customer_id: customer.id,
         customer_name: payload.customer_name, customer_phone: cleanPhone,
-        total, shipping_fee: shippingFee, fulfillment_method: payload.fulfillment_method, department: payload.department || "", shipping_province: payload.shipping_province || "", city: payload.city || "", address: payload.address || "", reference: payload.reference || "",
+        total, fulfillment_method: payload.fulfillment_method, department: payload.department || "", shipping_province: payload.shipping_province || "", city: payload.city || "", address: payload.address || "", reference: payload.reference || "",
         shipping_recipient_name: payload.shipping_recipient_name || "", shipping_recipient_phone: normalizeBoliviaPhone(payload.shipping_recipient_phone || ""), shipping_recipient_ci: payload.shipping_recipient_ci || "",
         preparation_mode: payload.preparation_mode || "live", payment_method: paymentMethod,
         delivery_latitude: null, delivery_longitude: null, delivery_accuracy_m: null,
@@ -372,7 +370,7 @@
       };
       orders.unshift(order); saveLocalOrders(orders);
       window.dispatchEvent(new CustomEvent("sweet-new-order", { detail: order }));
-      return { order_code: code, tracking_token: trackingToken, total, shipping_fee: shippingFee, order_serial: orderSerial, display_order_number: displayOrderNumber, payment_method: paymentMethod };
+      return { order_code: code, tracking_token: trackingToken, total, order_serial: orderSerial, display_order_number: displayOrderNumber, payment_method: paymentMethod };
     }
 
     let receiptPath = "";

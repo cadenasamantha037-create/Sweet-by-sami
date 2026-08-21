@@ -1,0 +1,24 @@
+Sweet by Sami V35
+
+BASE:
+Esta versión parte EXACTAMENTE de la V32 que funcionaba visualmente.
+
+CAMBIO AÑADIDO:
+- Bs. 20 de adelanto únicamente para Ivirgarzama, Eterazama y Mariposas.
+- El total del checkout muestra productos + Bs. 20.
+- Si el envío cuesta menos, se reembolsa la diferencia.
+- El admin muestra el adelanto.
+- Supabase valida y suma el monto desde la base.
+
+DEPLOY:
+Sube/reemplaza TODO el proyecto, incluyendo:
+assets/
+css/
+js/
+index.html
+catalogo.html
+admin-sami.html
+_redirects
+netlify.toml
+
+No reemplaces únicamente los HTML.
