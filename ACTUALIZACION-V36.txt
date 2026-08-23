@@ -1,0 +1,9 @@
+Sweet by Sami V36
+
+- Al agregar un producto ya NO se abre el carrito automáticamente.
+- Se cierra el selector del producto y aparece un aviso: “Producto añadido al pedido”.
+- El cliente puede seguir navegando inmediatamente.
+- El carrito mantiene + / − / Eliminar por producto.
+- Se eliminó el botón “Seguir comprando” del carrito.
+- El carrito queda accesible desde “Mi pedido” y mantiene “Realizar pedido ahora”.
+- No requiere SQL nuevo.

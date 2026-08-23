@@ -176,7 +176,20 @@ function addToCart() {
     price: Number(state.activeProduct.price),
     quantity: 1
   });
-  closeProduct(); renderCart(); openCart();
+  closeProduct();
+  renderCart();
+  showProductAddedToast(state.activeProduct?.name || "Producto");
+}
+
+let productAddedToastTimer = null;
+function showProductAddedToast(productName = "Producto") {
+  const toast = $("productAddedToast");
+  if (!toast) return;
+  const label = $("productAddedToastText");
+  if (label) label.textContent = `${productName} añadido al pedido`;
+  toast.classList.add("show");
+  clearTimeout(productAddedToastTimer);
+  productAddedToastTimer = setTimeout(() => toast.classList.remove("show"), 1900);
 }
 
 function renderCart() {
@@ -695,7 +708,6 @@ $("addToCartBtn").addEventListener("click", addToCart);
 $("openCartBtn").addEventListener("click", openCart);
 $("closeCartBtn").addEventListener("click", closeCart);
 drawerOverlay.addEventListener("click", closeCart);
-$("continueShoppingBtn")?.addEventListener("click", closeCart);
 $("startCheckoutBtn").addEventListener("click", openCheckout);
 $("closeCheckoutBtn").addEventListener("click", closeCheckout);
 checkoutModal.addEventListener("click", event => { if (event.target === checkoutModal) closeCheckout(); });
