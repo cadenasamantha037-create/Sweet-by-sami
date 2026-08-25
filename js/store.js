@@ -358,6 +358,8 @@
         customer_name: payload.customer_name, customer_phone: cleanPhone,
         total, fulfillment_method: payload.fulfillment_method, department: payload.department || "", shipping_province: payload.shipping_province || "", city: payload.city || "", address: payload.address || "", reference: payload.reference || "",
         shipping_recipient_name: payload.shipping_recipient_name || "", shipping_recipient_phone: normalizeBoliviaPhone(payload.shipping_recipient_phone || ""), shipping_recipient_ci: payload.shipping_recipient_ci || "",
+        dedication_from: payload.dedication_from || "", dedication_to: payload.dedication_to || "",
+        refund_amount: 0, refund_status: "none", refunded_at: null, refund_note: "",
         preparation_mode: payload.preparation_mode || "live", payment_method: paymentMethod,
         delivery_latitude: null, delivery_longitude: null, delivery_accuracy_m: null,
         payment_receipt_path: receipt, payment_status: paymentMethod === "cash" ? "cash_pending" : "pending_review", order_status: "received", admin_note: "",
@@ -397,6 +399,8 @@
       shipping_recipient_name: payload.shipping_recipient_name || "",
       shipping_recipient_phone: normalizeBoliviaPhone(payload.shipping_recipient_phone || ""),
       shipping_recipient_ci: payload.shipping_recipient_ci || "",
+      dedication_from: payload.dedication_from || "",
+      dedication_to: payload.dedication_to || "",
       payment_receipt_path: receiptPath,
       items: payload.items.map(item => ({ product_id: item.product_id, variant_id: item.variant_id, quantity: Number(item.quantity || 1) }))
     };

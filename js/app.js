@@ -195,6 +195,7 @@ function showProductAddedToast(productName = "Producto") {
 function renderCart() {
   const count = state.cart.reduce((sum, item) => sum + item.quantity, 0);
   $("cartCount").textContent = count;
+  if ($("floatingCartCount")) $("floatingCartCount").textContent = count;
   $("cartTotal").textContent = formatMoney(cartTotalValue());
   $("cartEmpty").style.display = state.cart.length ? "none" : "grid";
   $("cartItems").style.display = state.cart.length ? "block" : "none";
@@ -407,6 +408,8 @@ function buildOrderPayload() {
     shipping_recipient_name: fulfillment === "national" ? $("shippingRecipientName").value.trim() : "",
     shipping_recipient_phone: fulfillment === "national" ? fullNationalRecipientPhone() : "",
     shipping_recipient_ci: fulfillment === "national" ? $("shippingRecipientCi").value.trim() : "",
+    dedication_from: $("dedicationFrom")?.value.trim() || "",
+    dedication_to: $("dedicationTo")?.value.trim() || "",
     shipping_fee: provincialShippingFeeValue(),
     items: state.cart.map(item => ({ product_id:item.productId, product_name:item.name, variant_id:item.variantId, variant_name:item.variantName, quantity:item.quantity, unit_price:item.price }))
   };
@@ -445,6 +448,8 @@ function cashWhatsappMessage(orderCode = "") {
     orderCode ? `Pedido: ${orderCode}` : "",
     name ? `Nombre: ${name}` : "",
     phone?.length === 11 ? `WhatsApp: +${phone}` : "",
+    "",
+    ($("dedicationFrom")?.value.trim() || $("dedicationTo")?.value.trim()) ? `Dedicatoria: De ${$("dedicationFrom")?.value.trim() || "—"} · Para ${$("dedicationTo")?.value.trim() || "—"}` : "",
     "",
     "Mi pedido:",
     ...lines,
@@ -706,6 +711,7 @@ $("closeModalBtn").addEventListener("click", closeProduct);
 modal.addEventListener("click", event => { if (event.target === modal) closeProduct(); });
 $("addToCartBtn").addEventListener("click", addToCart);
 $("openCartBtn").addEventListener("click", openCart);
+$("floatingCartBtn")?.addEventListener("click", openCart);
 $("closeCartBtn").addEventListener("click", closeCart);
 drawerOverlay.addEventListener("click", closeCart);
 $("startCheckoutBtn").addEventListener("click", openCheckout);

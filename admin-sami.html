@@ -899,6 +899,23 @@ a{
 }
 
   </style>
+
+  <style id="sweet-v37-admin-ui">
+    .customer-advanced-filters{display:grid;grid-template-columns:repeat(5,minmax(120px,1fr));gap:8px;width:100%}
+    .customer-advanced-filters label{display:grid;gap:5px;font-size:10px;font-weight:800;color:#8b6662}
+    .customer-advanced-filters input{min-width:0;width:100%;padding:10px 11px;border:1px solid rgba(194,110,128,.22);border-radius:12px;background:#fff}
+    .refund-admin-box{margin-top:10px;padding:11px;border:1px solid rgba(224,115,147,.22);border-radius:14px;background:#fff7fa;display:flex;align-items:center;justify-content:space-between;gap:10px}
+    .refund-admin-box>div{display:grid;gap:2px}
+    .refund-admin-box strong{font-size:12px;color:#6d342f}
+    .refund-admin-box small{font-size:10px;color:#8c6e6b}
+    .refund-admin-box.refunded{background:#f5fff9;border-color:rgba(83,169,124,.25)}
+    .dedication-admin{margin-top:10px;padding:10px 12px;border-radius:14px;background:#fff6fa;border:1px dashed rgba(218,101,142,.25);display:grid;gap:3px}
+    .dedication-admin span{font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.12em;color:#d35d8b}
+    .dedication-admin strong{font-size:12px;color:#6b3630}
+    @media(max-width:1050px){.customer-advanced-filters{grid-template-columns:repeat(2,minmax(0,1fr))}.customer-advanced-filters .btn{grid-column:1/-1}}
+    @media(max-width:620px){.customer-advanced-filters{grid-template-columns:1fr}.customer-advanced-filters .btn{grid-column:auto}.refund-admin-box{align-items:stretch;flex-direction:column}.refund-admin-box button{width:100%}}
+  </style>
+
 </head>
 <body>
   <div class="admin-login hidden" id="adminLogin">
@@ -985,6 +1002,14 @@ a{
             <div><span class="section-label">Base de datos</span><h2>Clientes registrados</h2></div>
             <div class="customer-panel-actions">
               <div class="search-wrap small"><span>⌕</span><input id="customerSearch" placeholder="Buscar cliente"></div>
+              <div class="customer-advanced-filters">
+                <label>Último pedido desde<input id="customerDateFrom" type="date"></label>
+                <label>Hasta<input id="customerDateTo" type="date"></label>
+                <label>Mín. pedidos<input id="customerOrdersMin" type="number" min="0" step="1" placeholder="0"></label>
+                <label>Máx. pedidos<input id="customerOrdersMax" type="number" min="0" step="1" placeholder="Sin límite"></label>
+                <button class="btn btn-soft" id="clearCustomerFiltersBtn" type="button">Limpiar filtros</button>
+              </div>
+
               <div class="customer-report-controls">
                 <input id="customerReportMonth" type="month" aria-label="Mes del registro de clientes">
                 <button class="btn btn-pink" id="downloadCustomersPdfBtn" type="button">Descargar registro mensual PDF</button>

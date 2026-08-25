@@ -57,6 +57,8 @@ function paymentMethodLabel(method){ return ({qr:"QR",cash:"Efectivo"})[method] 
 function displayOrderNumber(order){ const base=Number(adminSettings?.historical_order_count||0); const serial=Number(order?.order_serial||0); return serial>0 ? base+serial : null; }
 
 function confirmedOrders() { return adminOrders.filter(o => o.payment_status === "confirmed"); }
+function refundAmount(order){ return Math.max(0, Number(order?.refund_amount || 0)); }
+function netOrderTotal(order){ return Math.max(0, Number(order?.total || 0) - refundAmount(order)); }
 
 function buildCustomerStats() {
   const map = new Map();
@@ -65,7 +67,7 @@ function buildCustomerStats() {
     const phone = cleanPhone(order.customer_phone);
     if (!map.has(phone)) map.set(phone,{id:order.customer_id || phone,name:order.customer_name,phone,order_count:0,confirmed_total:0,last_order_at:order.created_at});
     const c = map.get(phone); c.name = order.customer_name || c.name; c.order_count += 1;
-    if (order.payment_status === "confirmed") c.confirmed_total += Number(order.total || 0);
+    if (order.payment_status === "confirmed") c.confirmed_total += netOrderTotal(order);
     if (parseDate(order.created_at) > parseDate(c.last_order_at)) c.last_order_at = order.created_at;
   });
   return [...map.values()].sort((a,b)=>parseDate(b.last_order_at)-parseDate(a.last_order_at));
@@ -74,8 +76,8 @@ function buildCustomerStats() {
 function renderDashboard() {
   const now = new Date(), weekStart = startOfWeek(now), monthStart = startOfMonth(now);
   const confirmed = confirmedOrders();
-  const weekly = confirmed.filter(o => parseDate(o.payment_confirmed_at || o.created_at) >= weekStart).reduce((s,o)=>s+Number(o.total||0),0);
-  const monthly = confirmed.filter(o => parseDate(o.payment_confirmed_at || o.created_at) >= monthStart).reduce((s,o)=>s+Number(o.total||0),0);
+  const weekly = confirmed.filter(o => parseDate(o.payment_confirmed_at || o.created_at) >= weekStart).reduce((s,o)=>s+netOrderTotal(o),0);
+  const monthly = confirmed.filter(o => parseDate(o.payment_confirmed_at || o.created_at) >= monthStart).reduce((s,o)=>s+netOrderTotal(o),0);
   const pending = adminOrders.filter(o=>["pending_review","cash_pending"].includes(o.payment_status)).length;
   const customers = buildCustomerStats();
   $("weeklyIncome").textContent = fmtMoney(weekly); $("monthlyIncome").textContent = fmtMoney(monthly); $("pendingPayments").textContent = pending; $("customerCount").textContent = customers.length; $("pendingNavBadge").textContent = pending; $("rankingMonth").textContent = monthName();
@@ -87,7 +89,7 @@ function renderDashboard() {
 
   const monthlyOrders = confirmed.filter(o=>parseDate(o.payment_confirmed_at || o.created_at)>=monthStart);
   const buyers = new Map();
-  monthlyOrders.forEach(o=>{ const p=cleanPhone(o.customer_phone); if(!buyers.has(p)) buyers.set(p,{name:o.customer_name,phone:p,total:0,orders:0}); const b=buyers.get(p); b.total+=Number(o.total||0); b.orders+=1; });
+  monthlyOrders.forEach(o=>{ const p=cleanPhone(o.customer_phone); if(!buyers.has(p)) buyers.set(p,{name:o.customer_name,phone:p,total:0,orders:0}); const b=buyers.get(p); b.total+=netOrderTotal(o); b.orders+=1; });
   const top=[...buyers.values()].sort((a,b)=>b.total-a.total).slice(0,5);
   $("topBuyersList").innerHTML = top.length ? top.map((b,i)=>`<div class="ranking-row"><div class="ranking-number">${i+1}</div><div class="ranking-main"><strong>${esc(b.name)}</strong><small>${b.orders} pedido${b.orders===1?"":"s"} este mes</small></div><div class="ranking-total">${fmtMoney(b.total)}</div><a class="wa-btn" target="_blank" rel="noopener" href="${waLink(b.phone,`Hola ${b.name}, te escribimos de Sweet by Sami.`)}">WhatsApp</a></div>`).join("") : `<div class="empty-state">Todavía no hay compradores con pagos confirmados este mes.</div>`;
 
@@ -112,6 +114,14 @@ function nationalRecipientDetails(order) {
   const ci = order.shipping_recipient_ci || "";
   if (!name && !phone && !ci) return "";
   return `<div class="national-recipient-admin"><span>Datos del destinatario</span>${name ? `<strong>${esc(name)}</strong>` : ""}${phone ? `<div class="customer-name-row"><div class="customer-phone">+${esc(phone)}</div><a class="wa-btn" target="_blank" rel="noopener" href="${waLink(phone,`Hola ${name || ""}, te escribimos de Sweet by Sami sobre la recepción de un envío.`)}">WhatsApp</a></div>` : ""}${ci ? `<small>CI: ${esc(ci)}</small>` : ""}</div>`;
+}
+
+
+function dedicationDetails(order){
+  const from = String(order?.dedication_from || "").trim();
+  const to = String(order?.dedication_to || "").trim();
+  if(!from && !to) return "";
+  return `<div class="dedication-admin"><span>Dedicatoria</span><strong>De: ${esc(from || "—")} · Para: ${esc(to || "—")}</strong></div>`;
 }
 
 function deliveryLocationLink(order) {
@@ -141,8 +151,13 @@ function renderOrders() {
       <div class="order-head"><div class="order-code"><div><strong>${number?`#${number} · `:""}${esc(o.order_code)}</strong><small>${formatDate(o.created_at)}</small></div><span class="status-chip ${paymentClass(o.payment_status)}">${paymentLabel(o.payment_status)}</span></div><div class="order-total">${fmtMoney(o.total)}</div></div>
       <div class="order-grid">
         <div class="order-block"><span>Cliente</span><div class="customer-name-row"><strong>${esc(o.customer_name)}</strong><a class="wa-btn" target="_blank" rel="noopener" href="${waLink(o.customer_phone,`Hola ${o.customer_name}, te escribimos de Sweet by Sami sobre tu pedido ${o.order_code}.`)}">WhatsApp</a></div><div class="customer-phone">+${esc(o.customer_phone)}</div>${receiptButton}</div>
-        <div class="order-block"><span>Pedido y entrega</span><div class="order-items-mini">${(items || "<small>Sin items</small>") + shippingFeeLine}</div><div class="order-meta" style="margin-top:9px"><b>${esc(fulfillmentLabel(o.fulfillment_method))}</b><br>${esc(deliveryDetails(o))}${deliveryLocationLink(o)}</div>${nationalRecipientDetails(o)}<div class="order-extra-badges"><span>${esc(preparationLabel(o.preparation_mode))}</span><span class="gold">Pago: ${esc(paymentMethodLabel(o.payment_method))}</span>${o.fulfillment_method==="national"?'<span class="blue">Despacho sábado</span>':''}${shippingFee>0?`<span class="gold">Adelanto envío: ${fmtMoney(shippingFee)}</span>`:""}${o.fulfillment_method==="danae"?'<span class="blue">DANAE jueves</span>':''}</div></div>
-        <div class="order-block order-status-controls"><label>Estado del pago<select class="js-payment-status"><option value="pending_review" ${o.payment_status==="pending_review"?"selected":""}>Pendiente de revisión</option><option value="cash_pending" ${o.payment_status==="cash_pending"?"selected":""}>Efectivo pendiente</option><option value="confirmed" ${o.payment_status==="confirmed"?"selected":""}>Confirmado</option><option value="rejected" ${o.payment_status==="rejected"?"selected":""}>Comprobante con observación</option></select></label><label>Estado del pedido<select class="js-order-status"><option value="received" ${o.order_status==="received"?"selected":""}>Pedido recibido</option><option value="preparing" ${o.order_status==="preparing"?"selected":""}>Preparando</option><option value="ready" ${o.order_status==="ready"?"selected":""}>Listo para recoger</option><option value="shipped" ${o.order_status==="shipped"?"selected":""}>Enviado</option><option value="completed" ${o.order_status==="completed"?"selected":""}>Completado</option><option value="cancelled" ${o.order_status==="cancelled"?"selected":""}>Cancelado</option></select></label><label>Nota interna<textarea class="js-admin-note" rows="2" placeholder="Opcional">${esc(o.admin_note||"")}</textarea></label><small class="save-inline"></small></div>
+        <div class="order-block"><span>Pedido y entrega</span><div class="order-items-mini">${(items || "<small>Sin items</small>") + shippingFeeLine}</div><div class="order-meta" style="margin-top:9px"><b>${esc(fulfillmentLabel(o.fulfillment_method))}</b><br>${esc(deliveryDetails(o))}${deliveryLocationLink(o)}</div>${nationalRecipientDetails(o)}${dedicationDetails(o)}<div class="order-extra-badges"><span>${esc(preparationLabel(o.preparation_mode))}</span><span class="gold">Pago: ${esc(paymentMethodLabel(o.payment_method))}</span>${o.fulfillment_method==="national"?'<span class="blue">Despacho sábado</span>':''}${shippingFee>0?`<span class="gold">Adelanto envío: ${fmtMoney(shippingFee)}</span>`:""}${o.fulfillment_method==="danae"?'<span class="blue">DANAE jueves</span>':''}</div></div>
+        <div class="order-block order-status-controls"><label>Estado del pago<select class="js-payment-status"><option value="pending_review" ${o.payment_status==="pending_review"?"selected":""}>Pendiente de revisión</option><option value="cash_pending" ${o.payment_status==="cash_pending"?"selected":""}>Efectivo pendiente</option><option value="confirmed" ${o.payment_status==="confirmed"?"selected":""}>Confirmado</option><option value="rejected" ${o.payment_status==="rejected"?"selected":""}>Comprobante con observación</option></select></label><label>Estado del pedido<select class="js-order-status"><option value="received" ${o.order_status==="received"?"selected":""}>Pedido recibido</option><option value="preparing" ${o.order_status==="preparing"?"selected":""}>Preparando</option><option value="ready" ${o.order_status==="ready"?"selected":""}>Listo para recoger</option><option value="shipped" ${o.order_status==="shipped"?"selected":""}>Enviado</option><option value="completed" ${o.order_status==="completed"?"selected":""}>Completado</option><option value="cancelled" ${o.order_status==="cancelled"?"selected":""}>Cancelado</option></select></label><label>Nota interna<textarea class="js-admin-note" rows="2" placeholder="Opcional">${esc(o.admin_note||"")}</textarea></label>
+          <div class="refund-admin-box ${refundAmount(o)>0?"refunded":""}">
+            <div><strong>${refundAmount(o)>0?`Reembolso registrado: ${fmtMoney(refundAmount(o))}`:"Reembolso"}</strong><small>${refundAmount(o)>0?`${o.refund_note?esc(o.refund_note):"Registrado en administración"}${o.refunded_at?` · ${formatDate(o.refunded_at)}`:""}`:"Registra aquí un reembolso realizado al cliente. En pedidos provinciales se sugiere Bs. 20 como máximo inicial."}</small></div>
+            <button class="btn btn-soft js-refund-btn" type="button">${refundAmount(o)>0?"Editar reembolso":"Registrar reembolso"}</button>
+          </div>
+          <small class="save-inline"></small></div>
       </div></article>`;
   }).join("") : `<div class="empty-state">No hay pedidos que coincidan con este filtro.</div>`;
 
@@ -158,6 +173,22 @@ function renderOrders() {
       }catch(error){console.error(error);indicator.textContent="Error al guardar";}
     };
     card.querySelector(".js-payment-status").addEventListener("change",save); card.querySelector(".js-order-status").addEventListener("change",save); card.querySelector(".js-admin-note").addEventListener("change",save);
+    card.querySelector(".js-refund-btn")?.addEventListener("click", async()=>{
+      const order=adminOrders.find(o=>String(o.id)===String(id)); if(!order)return;
+      const suggested=refundAmount(order) || Number(order.shipping_fee||0) || 0;
+      const raw=prompt("Monto reembolsado en Bs.", String(suggested || ""));
+      if(raw===null)return;
+      const amount=Number(String(raw).replace(",","."));
+      if(!Number.isFinite(amount) || amount<0 || amount>Number(order.total||0)){alert("Ingresa un monto válido entre Bs. 0 y el total del pedido.");return;}
+      const promptedNote=prompt("Motivo o nota del reembolso (opcional):", order.refund_note||""); const note=promptedNote===null?(order.refund_note||""):promptedNote;
+      const indicator=card.querySelector(".save-inline"); indicator.textContent="Guardando reembolso...";
+      try{
+        const changes={refund_amount:amount,refund_status:amount>0?"refunded":"none",refunded_at:amount>0?new Date().toISOString():null,refund_note:note.trim()};
+        const updated=await window.SweetStore.updateOrder(id,changes);
+        const idx=adminOrders.findIndex(o=>String(o.id)===String(id)); if(idx>=0)adminOrders[idx]={...adminOrders[idx],...updated};
+        renderOrders();renderDashboard();renderCustomers();
+      }catch(error){console.error(error);indicator.textContent="Error al registrar reembolso";}
+    });
   });
   $("ordersList").querySelectorAll("[data-receipt]").forEach(btn=>btn.addEventListener("click",()=>openReceipt(btn.dataset.receipt)));
 }
@@ -171,8 +202,24 @@ $("receiptLightbox").addEventListener("click",e=>{if(e.target===$("receiptLightb
 
 function renderCustomers() {
   const q=$("customerSearch").value.trim().toLowerCase();
-  const rows=buildCustomerStats().filter(c=>!q||`${c.name} ${c.phone}`.toLowerCase().includes(q));
-  $("customersTableBody").innerHTML=rows.length?rows.map(c=>`<tr><td><strong>${esc(c.name)}</strong></td><td><span>${esc(c.phone)}</span></td><td>${c.order_count}</td><td><strong>${fmtMoney(c.confirmed_total)}</strong></td><td>${formatDate(c.last_order_at)}</td><td><a class="wa-btn" target="_blank" rel="noopener" href="${waLink(c.phone,`Hola ${c.name}, te escribimos de Sweet by Sami.`)}">WhatsApp</a></td></tr>`).join(""):`<tr><td colspan="6"><div class="empty-state">Todavía no hay clientes registrados.</div></td></tr>`;
+  const fromValue=$("customerDateFrom")?.value||"";
+  const toValue=$("customerDateTo")?.value||"";
+  const minRaw=$("customerOrdersMin")?.value||"";
+  const maxRaw=$("customerOrdersMax")?.value||"";
+  const from=fromValue?new Date(`${fromValue}T00:00:00`):null;
+  const to=toValue?new Date(`${toValue}T23:59:59.999`):null;
+  const min=minRaw===""?null:Number(minRaw);
+  const max=maxRaw===""?null:Number(maxRaw);
+  const rows=buildCustomerStats().filter(c=>{
+    if(q && !`${c.name} ${c.phone}`.toLowerCase().includes(q))return false;
+    const last=parseDate(c.last_order_at);
+    if(from && last<from)return false;
+    if(to && last>to)return false;
+    if(min!==null && Number(c.order_count||0)<min)return false;
+    if(max!==null && Number(c.order_count||0)>max)return false;
+    return true;
+  });
+  $("customersTableBody").innerHTML=rows.length?rows.map(c=>`<tr><td><strong>${esc(c.name)}</strong></td><td><span>${esc(c.phone)}</span></td><td>${c.order_count}</td><td><strong>${fmtMoney(c.confirmed_total)}</strong></td><td>${formatDate(c.last_order_at)}</td><td><a class="wa-btn" target="_blank" rel="noopener" href="${waLink(c.phone,`Hola ${c.name}, te escribimos de Sweet by Sami.`)}">WhatsApp</a></td></tr>`).join(""):`<tr><td colspan="6"><div class="empty-state">No hay clientes que coincidan con los filtros.</div></td></tr>`;
 }
 
 function renderSettings(){
@@ -227,11 +274,11 @@ function monthlyCustomerReport(monthValue){
     const phone=cleanPhone(order.customer_phone);
     if(!map.has(phone))map.set(phone,{name:order.customer_name||"",phone,orders:0,confirmed:0,last:null});
     const row=map.get(phone);row.name=order.customer_name||row.name;row.orders+=1;
-    if(order.payment_status==="confirmed")row.confirmed+=Number(order.total||0);
+    if(order.payment_status==="confirmed")row.confirmed+=netOrderTotal(order);
     const when=parseDate(order.created_at);if(!row.last||when>row.last)row.last=when;
   });
   const rows=[...map.values()].sort((a,b)=>(b.last?.getTime()||0)-(a.last?.getTime()||0));
-  return{rows,orders,confirmedTotal:orders.filter(o=>o.payment_status==="confirmed").reduce((sum,o)=>sum+Number(o.total||0),0)};
+  return{rows,orders,confirmedTotal:orders.filter(o=>o.payment_status==="confirmed").reduce((sum,o)=>sum+netOrderTotal(o),0)};
 }
 
 function downloadMonthlyCustomersPdf(){
@@ -658,6 +705,8 @@ async function loadAll(){
 }
 
 $("orderSearch").addEventListener("input",renderOrders); $("paymentFilter").addEventListener("change",renderOrders); $("fulfillmentFilter")?.addEventListener("change",renderOrders); $("customerSearch").addEventListener("input",renderCustomers); $("refreshBtn").addEventListener("click",loadAll);
+["customerDateFrom","customerDateTo","customerOrdersMin","customerOrdersMax"].forEach(id=>$(id)?.addEventListener("input",renderCustomers));
+$("clearCustomerFiltersBtn")?.addEventListener("click",()=>{["customerDateFrom","customerDateTo","customerOrdersMin","customerOrdersMax"].forEach(id=>{if($(id))$(id).value="";});$("customerSearch").value="";renderCustomers();});
 if($("customerReportMonth"))$("customerReportMonth").value=currentMonthValue();
 $("downloadCustomersPdfBtn")?.addEventListener("click",downloadMonthlyCustomersPdf);
 $("resetDemoBtn").addEventListener("click",()=>{if(window.SweetStore.mode!=="demo")return;if(!confirm("¿Restaurar los datos demo? Se borrarán pedidos, clientes, QR y cambios del catálogo de este navegador."))return;window.SweetStore.resetDemo();location.reload();});

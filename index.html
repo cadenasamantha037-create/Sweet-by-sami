@@ -901,6 +901,28 @@ a{
 }
 
   </style>
+
+  <style id="sweet-v37-public-ui">
+    .mobile-menu-toggle{display:none;border:0;background:transparent;width:46px;height:46px;border-radius:16px;align-items:center;justify-content:center;flex-direction:column;gap:5px;cursor:pointer}
+    .mobile-menu-toggle span{display:block;width:21px;height:2px;border-radius:99px;background:#7c3f3a;transition:.2s ease}
+    .mobile-menu-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .mobile-menu-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+    .mobile-menu-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    .floating-cart-button{position:fixed;right:18px;bottom:20px;z-index:1500;display:none;align-items:center;gap:8px;padding:12px 16px;border:1px solid rgba(255,255,255,.72);border-radius:999px;background:linear-gradient(135deg,#f879a8,#d94f82);color:#fff;text-decoration:none;font:800 13px/1 "DM Sans",sans-serif;box-shadow:0 16px 35px rgba(189,68,112,.28)}
+    .floating-cart-icon{font-size:18px}
+    .footer-socials{flex-wrap:wrap}
+    @media (max-width:760px){
+      .site-header{position:sticky!important;top:8px!important;z-index:1600!important}
+      .mobile-menu-toggle{display:flex}
+      .site-header .public-nav{display:none!important;position:absolute;left:12px;right:12px;top:calc(100% + 8px);padding:12px;background:rgba(255,250,251,.98);border:1px solid rgba(211,113,145,.2);border-radius:20px;box-shadow:0 18px 40px rgba(108,63,64,.15);flex-direction:column!important;align-items:stretch!important;gap:4px!important}
+      .site-header .public-nav.mobile-open{display:flex!important}
+      .site-header .public-nav a{padding:12px 14px;border-radius:14px;text-align:left}
+      .site-header .header-actions .cart-button{display:none!important}
+      .floating-cart-button{display:flex}
+      .footer-socials a{min-height:42px;display:inline-flex;align-items:center;justify-content:center}
+    }
+  </style>
+
 </head>
 <body class="home-v10">
   <div class="candy-rail candy-rail-left" aria-hidden="true"></div>
@@ -910,7 +932,10 @@ a{
     <a class="brand" href="index.html" aria-label="Sweet by Sami, inicio">
       <img src="assets/logo.png" alt="Sweet by Sami" />
     </a>
-    <nav class="desktop-nav" aria-label="Navegación principal">
+    <button class="mobile-menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="desktop-nav public-nav" aria-label="Navegación principal">
       <a href="index.html" class="active-link">Inicio</a>
       <a href="catalogo.html">Catálogo</a>
       <a href="#como-funciona">Cómo funciona</a>
@@ -922,6 +947,10 @@ a{
       </a>
     </div>
   </header>
+
+  <a class="floating-cart-button floating-cart-link" href="catalogo.html" aria-label="Ir a mi pedido">
+    <span class="floating-cart-icon">🛍️</span><span>Mi pedido</span>
+  </a>
 
   <main>
     <section class="hero-v5 section-shell hero-v10" id="inicio">
@@ -989,9 +1018,9 @@ a{
           <div class="home-mega-price">Bs. 250</div>
           <div class="home-mega-actions">
             <a href="catalogo.html?producto=mega-box#catalogo" class="button button-primary v10-solid-primary">Ver Mega Caja <span>→</span></a>
-            <a href="https://www.tiktok.com/@sweet_by.sami/video/7672940898900102418?is_from_webapp=1&amp;sender_device=pc&amp;web_id=7633673322001221141" class="button button-ghost home-mega-video-btn" target="_blank" rel="noopener noreferrer">Mira cómo se prepara <span>▶</span></a>
+            <a href="https://vt.tiktok.com/ZSVHbPvcb/" class="button button-ghost home-mega-video-btn" target="_blank" rel="noopener noreferrer">Ver preparación <span>▶</span></a>
           </div>
-          <small>Imagen referencial. El contenido puede variar según disponibilidad.</small>
+          <small>Imagen referencial. El contenido puede variar según disponibilidad. El video muestra cómo se prepara y se usa la Mega Caja.</small>
         </div>
       </div>
     </section>
@@ -1019,8 +1048,28 @@ a{
     <div class="footer-socials" aria-label="Redes sociales de Sweet by Sami">
       <a href="https://www.instagram.com/sweet_by_sami/" target="_blank" rel="noopener noreferrer">Instagram</a>
       <a href="https://www.tiktok.com/@sweet_by.sami?is_from_webapp=1&amp;sender_device=pc" target="_blank" rel="noopener noreferrer">TikTok</a>
+      <a href="https://wa.me/59164329209" target="_blank" rel="noopener noreferrer">WhatsApp · 64329209</a>
     </div>
     <p class="footer-note">Sweet by Sami · Bolivia</p>
   </footer>
+
+  <script>
+    (() => {
+      const toggle = document.querySelector(".mobile-menu-toggle");
+      const nav = document.querySelector(".public-nav");
+      if (!toggle || !nav) return;
+      const close = () => { nav.classList.remove("mobile-open"); toggle.setAttribute("aria-expanded","false"); };
+      toggle.addEventListener("click", () => {
+        const open = !nav.classList.contains("mobile-open");
+        nav.classList.toggle("mobile-open", open);
+        toggle.setAttribute("aria-expanded", String(open));
+      });
+      nav.querySelectorAll("a").forEach(a => a.addEventListener("click", close));
+      document.addEventListener("click", e => {
+        if (!nav.contains(e.target) && !toggle.contains(e.target)) close();
+      });
+    })();
+  </script>
+
 </body>
 </html>

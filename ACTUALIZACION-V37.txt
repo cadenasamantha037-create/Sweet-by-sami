@@ -1,0 +1,16 @@
+SWEET BY SAMI · V37
+
+Cambios:
+- Admin: botón para registrar/editar reembolsos manuales.
+- Admin: filtros de clientes por fecha de último pedido y cantidad de pedidos.
+- Dashboard/reportes usan ingreso neto (total confirmado menos reembolsos registrados).
+- Home: botón "Ver preparación" de Mega Caja enlazado a https://vt.tiktok.com/ZSVHbPvcb/
+- Checkout: dedicatoria opcional con campos DE y PARA.
+- Footer: WhatsApp 64329209.
+- Móvil: botón hamburguesa.
+- Móvil: carrito flotante con contador en catálogo.
+- Se mantienen carrito multi-producto, toast al agregar y todos los cambios anteriores.
+
+IMPORTANTE:
+Ejecuta SQL-ACTUALIZACION-V37.sql una sola vez sobre tu Supabase actual.
+El botón de reembolso REGISTRA el reembolso en el sistema; el movimiento bancario/QR se realiza manualmente.
