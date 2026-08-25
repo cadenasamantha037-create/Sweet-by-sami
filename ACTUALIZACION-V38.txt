@@ -1,0 +1,9 @@
+SWEET BY SAMI · V38
+
+- El carrito ahora es una burbuja circular con icono de carrito.
+- Siempre permanece visible en la esquina superior derecha.
+- Su posición se calcula automáticamente para quedar DEBAJO de la navbar y no taparla.
+- En catálogo conserva el contador de productos y abre el carrito.
+- En la página principal lleva al catálogo.
+- Se ocultó el botón duplicado de carrito dentro de la navbar.
+- No requiere SQL nuevo.

@@ -923,6 +923,64 @@ a{
     }
   </style>
 
+
+  <style id="sweet-v38-cart-bubble">
+    /* V38 · carrito flotante: burbuja fija debajo de la navbar */
+    .site-header{z-index:1600}
+    .site-header .header-actions .cart-button{display:none!important}
+    .floating-cart-button{
+      --bubble-size:58px;
+      position:fixed!important;
+      top:var(--sweet-cart-top,112px)!important;
+      right:18px!important;
+      bottom:auto!important;
+      z-index:1400!important;
+      width:var(--bubble-size)!important;
+      height:var(--bubble-size)!important;
+      min-width:var(--bubble-size)!important;
+      padding:0!important;
+      border:1px solid rgba(255,255,255,.78)!important;
+      border-radius:50%!important;
+      display:grid!important;
+      place-items:center!important;
+      background:linear-gradient(145deg,#fa85ae,#d84b80)!important;
+      color:#fff!important;
+      box-shadow:0 13px 30px rgba(185,64,108,.30),inset 0 1px 0 rgba(255,255,255,.45)!important;
+      text-decoration:none!important;
+      cursor:pointer;
+      transition:transform .18s ease,box-shadow .18s ease,top .18s ease;
+    }
+    .floating-cart-button:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(185,64,108,.34),inset 0 1px 0 rgba(255,255,255,.48)!important}
+    .floating-cart-button:active{transform:scale(.96)}
+    .floating-cart-button>span:not(.floating-cart-icon),.floating-cart-button>.floating-cart-label{display:none!important}
+    .floating-cart-icon{display:grid!important;place-items:center!important;width:28px;height:28px;font-size:0!important;line-height:1}
+    .floating-cart-svg{width:27px;height:27px;display:block}
+    #floatingCartCount{
+      position:absolute!important;
+      top:-5px!important;
+      right:-4px!important;
+      display:grid!important;
+      place-items:center!important;
+      min-width:23px!important;
+      height:23px!important;
+      padding:0 5px!important;
+      border:2px solid #fff!important;
+      border-radius:999px!important;
+      background:#6b332f!important;
+      color:#fff!important;
+      font:800 11px/1 "DM Sans",sans-serif!important;
+      box-shadow:0 4px 12px rgba(85,42,47,.22)!important;
+    }
+    .floating-cart-link .floating-cart-icon{margin:0!important}
+    @media(max-width:760px){
+      .floating-cart-button{--bubble-size:54px;right:14px!important}
+    }
+    @media(max-width:390px){
+      .floating-cart-button{--bubble-size:50px;right:10px!important}
+      .floating-cart-svg{width:24px;height:24px}
+    }
+  </style>
+
 </head>
 <body class="home-v10">
   <div class="candy-rail candy-rail-left" aria-hidden="true"></div>
@@ -948,8 +1006,8 @@ a{
     </div>
   </header>
 
-  <a class="floating-cart-button floating-cart-link" href="catalogo.html" aria-label="Ir a mi pedido">
-    <span class="floating-cart-icon">🛍️</span><span>Mi pedido</span>
+  <a class="floating-cart-button floating-cart-link" href="catalogo.html" aria-label="Abrir carrito" title="Mi pedido">
+    <span class="floating-cart-icon"><svg class="floating-cart-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h2l1.7 9.1a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 1.9-1.4L20 7H6.1" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="19" r="1.4" fill="currentColor"/><circle cx="17" cy="19" r="1.4" fill="currentColor"/></svg></span>
   </a>
 
   <main>
@@ -1068,6 +1126,26 @@ a{
       document.addEventListener("click", e => {
         if (!nav.contains(e.target) && !toggle.contains(e.target)) close();
       });
+    })();
+  </script>
+
+
+  <script id="sweet-v38-cart-position">
+    (() => {
+      const header = document.querySelector('.site-header');
+      const bubble = document.querySelector('.floating-cart-button');
+      if (!header || !bubble) return;
+      const placeBubble = () => {
+        const rect = header.getBoundingClientRect();
+        const gap = window.innerWidth <= 760 ? 10 : 12;
+        const minTop = window.innerWidth <= 760 ? 72 : 16;
+        const top = Math.max(minTop, Math.round(rect.bottom + gap));
+        document.documentElement.style.setProperty('--sweet-cart-top', `${top}px`);
+      };
+      placeBubble();
+      window.addEventListener('resize', placeBubble, {passive:true});
+      window.addEventListener('scroll', placeBubble, {passive:true});
+      if ('ResizeObserver' in window) new ResizeObserver(placeBubble).observe(header);
     })();
   </script>
 
