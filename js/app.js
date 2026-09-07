@@ -116,6 +116,9 @@ function openProduct(productId) {
   $("modalReferenceCopy").textContent = spoonProduct
     ? "Cada perlita representa una golosina. Las fotos y el contenido mostrado son referenciales; tu cajita final dependerá de las perlitas obtenidas."
     : `Las fotografías de ${category?.name || "este producto"} son referenciales. Revisa la presentación seleccionada antes de agregarla al pedido.`;
+  const isMegaProduct = String(product.id) === "mega-box" || /mega\s*caja/i.test(product.name || "");
+  const megaVideoBtn = $("megaPrepVideoBtn");
+  if (megaVideoBtn) megaVideoBtn.classList.toggle("hidden", !isMegaProduct);
   $("variantHelp").textContent = variants.length === 1 ? "1 opción disponible" : `${variants.length} opciones disponibles`;
 
   variantPills.innerHTML = variants.length
@@ -267,13 +270,10 @@ function applySettings() {
   renderSchedule("pickupHoursDisplay",s.pickup_hours,"7:30 a 9:00 am · 2:00 a 3:00 pm");
   renderSchedule("deliveryPickupHoursDisplay",s.pickup_hours,"7:30 a 9:00 am · 2:00 a 3:00 pm");
   renderSchedule("danaeHoursDisplay",s.danae_hours,"Lunes a viernes · 8:00 am a 8:30 pm");
-  const p1=String(s.coordination_phone_1||"59172947659").replace(/\D/g,"");
-  const p2=String(s.coordination_phone_2||"59164329209").replace(/\D/g,"");
+  const p1=String(s.coordination_phone_1||"59172751732").replace(/\D/g,"");
   const setWa=(id,phone,message)=>{const el=$(id);if(!el)return;el.href=`https://wa.me/${phone}?text=${encodeURIComponent(message)}`;el.textContent=`WhatsApp ${phone.startsWith("591")?phone.slice(3):phone}`;};
   setWa("pickupCoord1",p1,"Hola Sweet by Sami, quisiera coordinar otro horario para recoger mi pedido.");
-  setWa("pickupCoord2",p2,"Hola Sweet by Sami, quisiera coordinar otro horario para recoger mi pedido.");
   setWa("deliveryCoord1",p1,"Hola Sweet by Sami, quiero coordinar el horario para que mi delivery recoja el pedido.");
-  setWa("deliveryCoord2",p2,"Hola Sweet by Sami, quiero coordinar el horario para que mi delivery recoja el pedido.");
   if (s.payment_qr_url) {
     $("paymentQrImage").src = s.payment_qr_url;
     $("paymentQrImage").classList.add("visible");

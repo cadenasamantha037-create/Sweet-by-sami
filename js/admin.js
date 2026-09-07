@@ -231,7 +231,6 @@ function renderSettings(){
   $("danaeLocationInput").value=s.danae_location_name||"";
   $("danaeHoursInput").value=s.danae_hours||"";
   $("coordPhone1Input").value=s.coordination_phone_1||"";
-  $("coordPhone2Input").value=s.coordination_phone_2||"";
   $("historicalOrderCountInput").value=Number(s.historical_order_count||0);
   $("milestoneTargetInput").value=Number(s.milestone_target||1000);
   $("paymentInstructionsInput").value=s.payment_instructions||"";
@@ -244,7 +243,7 @@ $("saveSettingsBtn").addEventListener("click",async()=>{
     adminSettings=await window.SweetStore.saveSettings({...adminSettings,
       pickup_address:$("pickupAddressInput").value.trim(),pickup_map_url:$("pickupMapUrlInput").value.trim(),pickup_hours:$("pickupHoursInput").value.trim(),
       danae_map_url:$("danaeMapUrlInput").value.trim(),danae_location_name:$("danaeLocationInput").value.trim(),danae_hours:$("danaeHoursInput").value.trim(),
-      coordination_phone_1:$("coordPhone1Input").value.replace(/\D/g,""),coordination_phone_2:$("coordPhone2Input").value.replace(/\D/g,""),
+      coordination_phone_1:$("coordPhone1Input").value.replace(/\D/g,""),coordination_phone_2:"",
       historical_order_count:Number($("historicalOrderCountInput").value||0),milestone_target:Number($("milestoneTargetInput").value||1000),
       payment_instructions:$("paymentInstructionsInput").value.trim()});
     status.textContent="Configuración guardada"; renderDashboard(); setTimeout(()=>status.textContent="",1600);

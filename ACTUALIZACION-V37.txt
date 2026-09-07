@@ -6,7 +6,7 @@ Cambios:
 - Dashboard/reportes usan ingreso neto (total confirmado menos reembolsos registrados).
 - Home: botón "Ver preparación" de Mega Caja enlazado a https://vt.tiktok.com/ZSVHbPvcb/
 - Checkout: dedicatoria opcional con campos DE y PARA.
-- Footer: WhatsApp 64329209.
+- Footer: WhatsApp 72751732.
 - Móvil: botón hamburguesa.
 - Móvil: carrito flotante con contador en catálogo.
 - Se mantienen carrito multi-producto, toast al agregar y todos los cambios anteriores.

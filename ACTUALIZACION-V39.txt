@@ -1,0 +1,12 @@
+SWEET BY SAMI · V39
+
+Cambios:
+- Inicio: Mega Caja ya no tiene una sección grande independiente.
+- Inicio: aparece como cuarto botón debajo de los Scoops P/M/G, enlazando a su producto.
+- Catálogo: Mega Caja está forzada a la categoría/apartado independiente "Mega Caja".
+- Video: "Ver preparación" solo aparece dentro de los detalles de Mega Caja.
+- WhatsApp oficial único: 72751732.
+- Admin: queda un solo campo de WhatsApp de contacto.
+- Mantiene carrito burbuja, dedicatorias, reembolsos, filtros, entregas, QR y funciones anteriores.
+
+Ejecutar SQL-ACTUALIZACION-V39.sql una sola vez en Supabase.

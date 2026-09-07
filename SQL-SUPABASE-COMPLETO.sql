@@ -397,7 +397,7 @@ on conflict (id) do nothing;
 insert into public.categories (id,name,description,active,sort_order)
 values
   ('spoons','Scoops','Elige P, M o G y después selecciona la presentación disponible para tu cajita.',true,1),
-  ('boxes','Cajas','Opciones especiales con productos completos y snacks variados para regalar o compartir.',true,2)
+  ('boxes','Mega Caja','La Mega Caja tiene su propio apartado con productos completos, snacks, dulces y sorpresas.',true,2)
 on conflict (id) do nothing;
 
 -- Migra el nombre anterior si existiera.
@@ -971,8 +971,8 @@ set
   danae_map_url = coalesce(nullif(trim(danae_map_url),''), 'https://maps.app.goo.gl/YHXgj9gWhiJ3pkgH7?g_st=awb'),
   danae_location_name = coalesce(nullif(trim(danae_location_name),''), 'Paquetería DANAE · 1er piso · local 20'),
   danae_hours = coalesce(nullif(trim(danae_hours),''), 'Lunes a viernes · 8:00 am a 8:30 pm'),
-  coordination_phone_1 = coalesce(nullif(trim(coordination_phone_1),''), '59172947659'),
-  coordination_phone_2 = coalesce(nullif(trim(coordination_phone_2),''), '59164329209'),
+  coordination_phone_1 = coalesce(nullif(trim(coordination_phone_1),''), '59172751732'),
+  coordination_phone_2 = coalesce(nullif(trim(coordination_phone_2),''), ''),
   historical_order_count = greatest(0, coalesce(historical_order_count,500)),
   milestone_target = greatest(1, coalesce(milestone_target,1000))
 where id = 'main';
@@ -1725,6 +1725,52 @@ $$;
 
 revoke all on function public.create_public_order(jsonb) from public;
 grant execute on function public.create_public_order(jsonb) to anon, authenticated;
+
+notify pgrst, 'reload schema';
+
+commit;
+
+
+-- ============================================================
+-- SWEET BY SAMI · V39
+-- Mega Caja separada + único WhatsApp de contacto
+-- ============================================================
+
+begin;
+
+-- Mega Caja queda fuera de Scoops y en su propio apartado.
+insert into public.categories (id,name,description,active,sort_order)
+values (
+  'boxes',
+  'Mega Caja',
+  'La Mega Caja tiene su propio apartado con productos completos, snacks, dulces y sorpresas.',
+  true,
+  2
+)
+on conflict (id) do update
+set
+  name = excluded.name,
+  description = excluded.description,
+  active = true,
+  sort_order = excluded.sort_order,
+  updated_at = now();
+
+update public.products
+set category_id = 'boxes',
+    sort_order = 1,
+    updated_at = now()
+where id = 'mega-box';
+
+-- Un solo WhatsApp oficial para coordinación.
+insert into public.site_settings (id)
+values ('main')
+on conflict (id) do nothing;
+
+update public.site_settings
+set coordination_phone_1 = '59172751732',
+    coordination_phone_2 = '',
+    updated_at = now()
+where id = 'main';
 
 notify pgrst, 'reload schema';
 

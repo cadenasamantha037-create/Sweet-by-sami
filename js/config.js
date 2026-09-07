@@ -7,6 +7,6 @@ window.SWEET_CONFIG = {
   supabaseKey: "sb_publishable_Vf38sn6whsD9XdwFlTx__Q_F-Nvu1UM",
   supabaseAnonKey: "",
   adminEmail: "cadenasamantha037@gmail.com",
-  whatsappNumber: "59164329209",
+  whatsappNumber: "59172751732",
   currency: "Bs."
 };
