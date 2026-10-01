@@ -195,6 +195,19 @@ function showProductAddedToast(productName = "Producto") {
   productAddedToastTimer = setTimeout(() => toast.classList.remove("show"), 1900);
 }
 
+let orderRegisteredToastTimer = null;
+function showOrderRegisteredToast(created = {}) {
+  const toast = $("orderRegisteredToast");
+  if (!toast) return;
+  const text = $("orderRegisteredToastText");
+  const number = created?.display_order_number ? `Pedido #${created.display_order_number}` : created?.order_code ? `Código ${created.order_code}` : "";
+  if (text) text.textContent = number ? `${number} · Ya lo recibimos correctamente.` : "Ya lo recibimos correctamente.";
+  clearTimeout(orderRegisteredToastTimer);
+  toast.classList.add("is-visible");
+  orderRegisteredToastTimer = setTimeout(() => toast.classList.remove("is-visible"), 4500);
+}
+
+
 function renderCart() {
   const count = state.cart.reduce((sum, item) => sum + item.quantity, 0);
   $("cartCount").textContent = count;
@@ -553,6 +566,7 @@ async function submitOrder(event) {
   button.disabled = true; button.textContent = "Registrando pedido...";
   try {
     const created = await window.SweetStore.createOrder(payload, payload.payment_method === "qr" ? state.receiptFile : null);
+    showOrderRegisteredToast(created);
     state.tracking = { order_code: created.order_code, tracking_token: created.tracking_token, phone: payload.customer_phone, display_order_number: created.display_order_number, payment_method: payload.payment_method };
     localStorage.setItem(LAST_ORDER_KEY, JSON.stringify(state.tracking));
     $("successOrderCode").textContent = created.order_code;

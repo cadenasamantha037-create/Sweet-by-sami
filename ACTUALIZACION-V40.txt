@@ -1,0 +1,8 @@
+SWEET BY SAMI · V40
+
+Cambio:
+- Al registrarse correctamente un pedido aparece una burbuja flotante con el mensaje “¡Tu pedido ha sido registrado!”.
+- La burbuja muestra también el número/código del pedido cuando está disponible.
+- Se oculta automáticamente después de 4,5 segundos.
+- Se adapta a móvil y escritorio y aparece por debajo de la barra superior.
+- No requiere cambios SQL.
