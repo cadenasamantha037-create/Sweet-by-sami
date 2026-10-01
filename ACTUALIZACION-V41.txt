@@ -1,0 +1,7 @@
+SWEET BY SAMI · V41
+
+Cambio:
+- Se eliminó el campo "Dirección / agencia de destino" de Envíos nacionales.
+- El cliente solo completa destinatario, celular, CI, departamento y provincia cuando corresponde.
+- Para conservar compatibilidad con la función actual de Supabase, el sistema guarda internamente el departamento/provincia seleccionado como destino.
+- No requiere SQL nuevo.

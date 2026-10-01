@@ -350,7 +350,6 @@ function updateFulfillmentFields() {
   $("nationalFields").classList.toggle("hidden", selected !== "national");
   $("danaeFields").classList.toggle("hidden", selected !== "danae");
   $("shippingDepartment").required = selected === "national";
-  $("shippingAddress").required = selected === "national";
   $("shippingRecipientName").required = selected === "national";
   $("shippingRecipientPhone").required = selected === "national";
   $("shippingRecipientCi").required = selected === "national";
@@ -409,7 +408,14 @@ function buildOrderPayload() {
   let department = ""; let province = ""; let city = ""; let address = ""; let reference = "";
   if (fulfillment === "pickup") address = state.settings?.pickup_address || "Sweet by Sami · Cochabamba";
   if (fulfillment === "customer_delivery") { city = "Cochabamba"; address = state.settings?.pickup_address || "Sweet by Sami · Cochabamba"; reference = $("deliveryReference").value.trim(); }
-  if (fulfillment === "national") { department = $("shippingDepartment").value.trim(); province = department === "Cochabamba" ? $("shippingProvince").value.trim() : ""; city = ""; address = $("shippingAddress").value.trim(); }
+  if (fulfillment === "national") {
+    department = $("shippingDepartment").value.trim();
+    province = department === "Cochabamba" ? $("shippingProvince").value.trim() : "";
+    city = "";
+    // El cliente ya no debe escribir dirección/agencia.
+    // Guardamos internamente el destino seleccionado para mantener compatibilidad con Supabase.
+    address = province ? `${department} · ${province}` : department;
+  }
   if (fulfillment === "danae") { city = "Cochabamba"; address = state.settings?.danae_location_name || "Paquetería DANAE · 1er piso · local 20"; }
   return {
     customer_name: $("customerName").value.trim(),
