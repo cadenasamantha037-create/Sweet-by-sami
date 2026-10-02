@@ -81,6 +81,7 @@
     danae_map_url: "https://maps.app.goo.gl/YHXgj9gWhiJ3pkgH7?g_st=awb",
     danae_location_name: "Paquetería DANAE · 1er piso · local 20",
     danae_hours: "Lunes a viernes · 8:00 am a 8:30 pm",
+    national_shipping_days: "Lunes,Miércoles,Viernes",
     coordination_phone_1: "59172751732",
     coordination_phone_2: "",
     historical_order_count: 500,

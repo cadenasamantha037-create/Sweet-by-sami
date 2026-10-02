@@ -51,7 +51,14 @@ function waLink(phone, text="Hola") { return `https://wa.me/${waNumber(phone)}?t
 function paymentClass(status){ return status === "confirmed" ? "confirmed" : status === "rejected" ? "rejected" : "pending"; }
 function paymentLabel(status){ return ({pending_review:"Pendiente QR",cash_pending:"Efectivo pendiente",confirmed:"Confirmado",rejected:"Con observación"})[status] || status; }
 function orderLabel(status){ return ({received:"Recibido",preparing:"Preparando",ready:"Listo para recoger",shipped:"Enviado",completed:"Completado",cancelled:"Cancelado"})[status] || status; }
-function fulfillmentLabel(method){ return ({pickup:"Recojo en local",customer_delivery:"Manda tu delivery",delivery:"Manda tu delivery",national:"Envío nacional · sábado",danae:"Paquetería DANAE · jueves"})[method] || method; }
+function nationalShippingDaysText(settings=adminSettings){
+  const raw=String(settings?.national_shipping_days||"Lunes,Miércoles,Viernes")
+    .split(",").map(x=>x.trim()).filter(Boolean);
+  if(!raw.length) return "Lunes, miércoles y viernes";
+  try { return new Intl.ListFormat("es-BO",{style:"long",type:"conjunction"}).format(raw); }
+  catch { return raw.join(", "); }
+}
+function fulfillmentLabel(method){ return ({pickup:"Recojo en local",customer_delivery:"Manda tu delivery",delivery:"Manda tu delivery",national:`Envío nacional · ${nationalShippingDaysText()}`,danae:"Paquetería DANAE · jueves"})[method] || method; }
 function preparationLabel(mode){ return ({live:"Armado en LIVE",tiktok:"Video para TikTok"})[mode] || mode || "Armado en LIVE"; }
 function paymentMethodLabel(method){ return ({qr:"QR",cash:"Efectivo"})[method] || method || "QR"; }
 function displayOrderNumber(order){ const base=Number(adminSettings?.historical_order_count||0); const serial=Number(order?.order_serial||0); return serial>0 ? base+serial : null; }
@@ -151,7 +158,7 @@ function renderOrders() {
       <div class="order-head"><div class="order-code"><div><strong>${number?`#${number} · `:""}${esc(o.order_code)}</strong><small>${formatDate(o.created_at)}</small></div><span class="status-chip ${paymentClass(o.payment_status)}">${paymentLabel(o.payment_status)}</span></div><div class="order-total">${fmtMoney(o.total)}</div></div>
       <div class="order-grid">
         <div class="order-block"><span>Cliente</span><div class="customer-name-row"><strong>${esc(o.customer_name)}</strong><a class="wa-btn" target="_blank" rel="noopener" href="${waLink(o.customer_phone,`Hola ${o.customer_name}, te escribimos de Sweet by Sami sobre tu pedido ${o.order_code}.`)}">WhatsApp</a></div><div class="customer-phone">+${esc(o.customer_phone)}</div>${receiptButton}</div>
-        <div class="order-block"><span>Pedido y entrega</span><div class="order-items-mini">${(items || "<small>Sin items</small>") + shippingFeeLine}</div><div class="order-meta" style="margin-top:9px"><b>${esc(fulfillmentLabel(o.fulfillment_method))}</b><br>${esc(deliveryDetails(o))}${deliveryLocationLink(o)}</div>${nationalRecipientDetails(o)}${dedicationDetails(o)}<div class="order-extra-badges"><span>${esc(preparationLabel(o.preparation_mode))}</span><span class="gold">Pago: ${esc(paymentMethodLabel(o.payment_method))}</span>${o.fulfillment_method==="national"?'<span class="blue">Despacho sábado</span>':''}${shippingFee>0?`<span class="gold">Adelanto envío: ${fmtMoney(shippingFee)}</span>`:""}${o.fulfillment_method==="danae"?'<span class="blue">DANAE jueves</span>':''}</div></div>
+        <div class="order-block"><span>Pedido y entrega</span><div class="order-items-mini">${(items || "<small>Sin items</small>") + shippingFeeLine}</div><div class="order-meta" style="margin-top:9px"><b>${esc(fulfillmentLabel(o.fulfillment_method))}</b><br>${esc(deliveryDetails(o))}${deliveryLocationLink(o)}</div>${nationalRecipientDetails(o)}${dedicationDetails(o)}<div class="order-extra-badges"><span>${esc(preparationLabel(o.preparation_mode))}</span><span class="gold">Pago: ${esc(paymentMethodLabel(o.payment_method))}</span>${o.fulfillment_method==="national"?`<span class="blue">Despacho: ${esc(nationalShippingDaysText())}</span>`:""}${shippingFee>0?`<span class="gold">Adelanto envío: ${fmtMoney(shippingFee)}</span>`:""}${o.fulfillment_method==="danae"?'<span class="blue">DANAE jueves</span>':''}</div></div>
         <div class="order-block order-status-controls"><label>Estado del pago<select class="js-payment-status"><option value="pending_review" ${o.payment_status==="pending_review"?"selected":""}>Pendiente de revisión</option><option value="cash_pending" ${o.payment_status==="cash_pending"?"selected":""}>Efectivo pendiente</option><option value="confirmed" ${o.payment_status==="confirmed"?"selected":""}>Confirmado</option><option value="rejected" ${o.payment_status==="rejected"?"selected":""}>Comprobante con observación</option></select></label><label>Estado del pedido<select class="js-order-status"><option value="received" ${o.order_status==="received"?"selected":""}>Pedido recibido</option><option value="preparing" ${o.order_status==="preparing"?"selected":""}>Preparando</option><option value="ready" ${o.order_status==="ready"?"selected":""}>Listo para recoger</option><option value="shipped" ${o.order_status==="shipped"?"selected":""}>Enviado</option><option value="completed" ${o.order_status==="completed"?"selected":""}>Completado</option><option value="cancelled" ${o.order_status==="cancelled"?"selected":""}>Cancelado</option></select></label><label>Nota interna<textarea class="js-admin-note" rows="2" placeholder="Opcional">${esc(o.admin_note||"")}</textarea></label>
           <div class="refund-admin-box ${refundAmount(o)>0?"refunded":""}">
             <div><strong>${refundAmount(o)>0?`Reembolso registrado: ${fmtMoney(refundAmount(o))}`:"Reembolso"}</strong><small>${refundAmount(o)>0?`${o.refund_note?esc(o.refund_note):"Registrado en administración"}${o.refunded_at?` · ${formatDate(o.refunded_at)}`:""}`:"Registra aquí un reembolso realizado al cliente. En pedidos provinciales se sugiere Bs. 20 como máximo inicial."}</small></div>
@@ -230,6 +237,8 @@ function renderSettings(){
   $("danaeMapUrlInput").value=s.danae_map_url||"";
   $("danaeLocationInput").value=s.danae_location_name||"";
   $("danaeHoursInput").value=s.danae_hours||"";
+  const selectedDays=new Set(String(s.national_shipping_days||"Lunes,Miércoles,Viernes").split(",").map(x=>x.trim()).filter(Boolean));
+  document.querySelectorAll('input[name="nationalShippingDay"]').forEach(input=>{input.checked=selectedDays.has(input.value);});
   $("coordPhone1Input").value=s.coordination_phone_1||"";
   $("historicalOrderCountInput").value=Number(s.historical_order_count||0);
   $("milestoneTargetInput").value=Number(s.milestone_target||1000);
@@ -243,6 +252,7 @@ $("saveSettingsBtn").addEventListener("click",async()=>{
     adminSettings=await window.SweetStore.saveSettings({...adminSettings,
       pickup_address:$("pickupAddressInput").value.trim(),pickup_map_url:$("pickupMapUrlInput").value.trim(),pickup_hours:$("pickupHoursInput").value.trim(),
       danae_map_url:$("danaeMapUrlInput").value.trim(),danae_location_name:$("danaeLocationInput").value.trim(),danae_hours:$("danaeHoursInput").value.trim(),
+      national_shipping_days:[...document.querySelectorAll('input[name="nationalShippingDay"]:checked')].map(input=>input.value).join(",") || "Lunes,Miércoles,Viernes",
       coordination_phone_1:$("coordPhone1Input").value.replace(/\D/g,""),coordination_phone_2:"",
       historical_order_count:Number($("historicalOrderCountInput").value||0),milestone_target:Number($("milestoneTargetInput").value||1000),
       payment_instructions:$("paymentInstructionsInput").value.trim()});

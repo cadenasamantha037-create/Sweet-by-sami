@@ -916,6 +916,41 @@ a{
     @media(max-width:620px){.customer-advanced-filters{grid-template-columns:1fr}.customer-advanced-filters .btn{grid-column:auto}.refund-admin-box{align-items:stretch;flex-direction:column}.refund-admin-box button{width:100%}}
   </style>
 
+
+  <style id="sweet-v42-shipping-days-admin">
+    .national-days-admin{
+      display:grid;
+      gap:12px;
+      padding:16px;
+      border:1px solid rgba(210,104,139,.20);
+      border-radius:18px;
+      background:linear-gradient(135deg,#fffafa,#fff2f7);
+    }
+    .national-days-admin-copy{display:grid;gap:4px}
+    .national-days-admin-copy strong{font-size:13px;color:#6b3732}
+    .national-days-admin-copy small{font-size:11px;line-height:1.45;color:#927672}
+    .national-days-options{display:flex;flex-wrap:wrap;gap:8px}
+    .national-days-options label{
+      display:inline-flex;
+      align-items:center;
+      gap:7px;
+      padding:9px 11px;
+      margin:0;
+      border:1px solid rgba(209,101,138,.20);
+      border-radius:999px;
+      background:#fff;
+      color:#7c514d;
+      font-size:11px;
+      font-weight:800;
+      cursor:pointer;
+    }
+    .national-days-options input{accent-color:#df5b8b}
+    @media(max-width:620px){
+      .national-days-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+      .national-days-options label{justify-content:flex-start}
+    }
+  </style>
+
 </head>
 <body>
   <div class="admin-login hidden" id="adminLogin">
@@ -1043,6 +1078,23 @@ a{
             <label>Google Maps · Paquetería DANAE<input id="danaeMapUrlInput" placeholder="https://maps.app.goo.gl/..."></label>
             <label>Datos DANAE<input id="danaeLocationInput" placeholder="Paquetería DANAE · 1er piso · local 20"></label>
             <label>Horario DANAE<input id="danaeHoursInput" placeholder="Lunes a viernes · 8:00 am a 8:30 pm"></label>
+
+            <div class="national-days-admin">
+              <div class="national-days-admin-copy">
+                <strong>Días de envíos nacionales</strong>
+                <small>Marca los días en los que Sweet by Sami realiza despachos. Este cambio se refleja automáticamente en la tienda.</small>
+              </div>
+              <div class="national-days-options" id="nationalShippingDaysOptions">
+                <label><input type="checkbox" name="nationalShippingDay" value="Lunes">Lunes</label>
+                <label><input type="checkbox" name="nationalShippingDay" value="Martes">Martes</label>
+                <label><input type="checkbox" name="nationalShippingDay" value="Miércoles">Miércoles</label>
+                <label><input type="checkbox" name="nationalShippingDay" value="Jueves">Jueves</label>
+                <label><input type="checkbox" name="nationalShippingDay" value="Viernes">Viernes</label>
+                <label><input type="checkbox" name="nationalShippingDay" value="Sábado">Sábado</label>
+                <label><input type="checkbox" name="nationalShippingDay" value="Domingo">Domingo</label>
+              </div>
+            </div>
+
             <div class="settings-inline-grid">
               <label>WhatsApp de contacto<input id="coordPhone1Input" inputmode="tel" placeholder="59172751732"></label>
             </div>

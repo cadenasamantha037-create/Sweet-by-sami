@@ -1,0 +1,8 @@
+SWEET BY SAMI · V42
+
+- Administración > QR y entregas ahora permite elegir los días de envíos nacionales.
+- Por defecto quedan Lunes, Miércoles y Viernes.
+- Se pueden marcar/desmarcar días y guardar sin tocar código.
+- La tienda pública actualiza automáticamente el texto del checkout.
+- Los pedidos del panel muestran los días configurados en vez de “sábado”.
+- Requiere ejecutar SQL-ACTUALIZACION-V42.sql una sola vez.

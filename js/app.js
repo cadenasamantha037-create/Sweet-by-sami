@@ -265,11 +265,23 @@ function renderCheckoutSummary() {
   });
 }
 
+function formatNationalShippingDays(value){
+  const days=String(value||"Lunes,Miércoles,Viernes").split(",").map(x=>x.trim()).filter(Boolean);
+  if(!days.length) return "lunes, miércoles y viernes";
+  let formatted;
+  try { formatted=new Intl.ListFormat("es-BO",{style:"long",type:"conjunction"}).format(days); }
+  catch { formatted=days.join(", "); }
+  return formatted.charAt(0).toLowerCase()+formatted.slice(1);
+}
+
 function applySettings() {
   const s = state.settings || {};
   $("pickupAddressText").textContent = s.pickup_address || "Sweet by Sami · Cochabamba";
   if ($("deliveryPickupAddressText")) $("deliveryPickupAddressText").textContent = s.pickup_address || "Sweet by Sami · Cochabamba";
   $("paymentInstructions").textContent = s.payment_instructions || "Escanea el QR, realiza el pago y luego adjunta una captura del comprobante.";
+  const nationalDays=formatNationalShippingDays(s.national_shipping_days);
+  if($("nationalShippingDaysSummary")) $("nationalShippingDaysSummary").textContent=`Despachos ${nationalDays}.`;
+  if($("nationalShippingDaysDetail")) $("nationalShippingDaysDetail").textContent=`Los envíos nacionales salen los días ${nationalDays}.`;
   const pickupUrl = s.pickup_map_url || "https://maps.app.goo.gl/FsLshw8DKRAXytGF9";
   const danaeUrl = s.danae_map_url || "https://maps.app.goo.gl/YHXgj9gWhiJ3pkgH7?g_st=awb";
   ["pickupMapLink","deliveryPickupMapLink"].forEach(id => { const el=$(id); if(el) el.href=pickupUrl; });
